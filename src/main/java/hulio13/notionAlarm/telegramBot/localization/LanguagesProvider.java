@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public final class LanguagesProvider {
-    private static final String PATH = "./localization";
+    private static final String PATH = "./TelegramBotLocalization";
     public static List<Language> getAll(){
         Path path = Paths.get(PATH);
         return null;

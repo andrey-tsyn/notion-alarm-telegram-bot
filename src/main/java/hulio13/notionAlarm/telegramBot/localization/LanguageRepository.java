@@ -22,7 +22,7 @@ public final class LanguageRepository {
             defaultLang = langs.stream().filter(l -> l.langTag() == DEFAULT_LANGUAGE).findFirst().get();
         }
         else{
-            throw new RuntimeException("Language tag not found");
+            throw new RuntimeException("Default language tag not found");
         }
     }
     public static String getPhrase(String langTag, String phraseId){

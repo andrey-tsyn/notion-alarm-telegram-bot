@@ -60,7 +60,7 @@ public class JsonUserRepository implements UserRepository {
     @Override
     public User getUserByTelegramId(String telegramId) {
         synchronized (users){
-            User user = getUsers().stream().filter(u -> u.telegramId == telegramId).findFirst().get();
+            User user = getUsers().stream().filter(u -> u.telegramId.equals(telegramId)).findFirst().get();
             return user;
         }
     }

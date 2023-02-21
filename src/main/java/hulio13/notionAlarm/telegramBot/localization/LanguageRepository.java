@@ -19,7 +19,7 @@ public final class LanguageRepository {
                 // TODO: Some logging
                 throw new RuntimeException("Default language tag already assigned");
             }
-            defaultLang = langs.stream().filter(l -> l.langTag() == DEFAULT_LANGUAGE).findFirst().get();
+            defaultLang = langs.stream().filter(l -> l.langTag().equals(DEFAULT_LANGUAGE)).findFirst().get();
         }
         else{
             throw new RuntimeException("Default language tag not found");
@@ -30,7 +30,8 @@ public final class LanguageRepository {
             throw new RuntimeException("Static class is not initialized, call Init() before");
         }
 
-        Language lang = langs.stream().filter(l -> l.langTag() == langTag).findFirst().get();
+
+        Language lang = langs.stream().filter(l -> l.langTag().equals(langTag)).findFirst().get();
 
         if (lang == null){
             throw new RuntimeException("Language tag not found");

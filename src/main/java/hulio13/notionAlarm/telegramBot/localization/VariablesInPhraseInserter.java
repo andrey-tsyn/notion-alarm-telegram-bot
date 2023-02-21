@@ -1,10 +1,7 @@
 package hulio13.notionAlarm.telegramBot.localization;
 
-import hulio13.notionAlarm.telegramBot.localization.exceptions.InvalidPhraseException;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public final class VariablesInPhraseInserter {
     static public String insert(String phrase, Map<String, String> vars) throws InvalidPhraseException{

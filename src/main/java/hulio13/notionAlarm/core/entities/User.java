@@ -1,7 +1,6 @@
 package hulio13.notionAlarm.core.entities;
 
 import com.fasterxml.jackson.annotation.*;
-import hulio13.notionAlarm.core.entities.notifications.*;
 
 import java.util.*;
 
@@ -9,23 +8,23 @@ public final class User {
     public final String telegramId;
     private String notionToken;
     @JsonManagedReference
-    private final List<RecurTask> recurTasks;
+    private final List<ResourceState> resourceStates;
 
     public User(String telegramId) {
         this.telegramId = telegramId;
-        this.recurTasks = new LinkedList<>();
+        this.resourceStates = new LinkedList<>();
     }
 
     @JsonCreator
-    public User(@JsonProperty("telegramId") String telegramId, @JsonProperty("notionToken") String notionToken, @JsonProperty("notifications") List<RecurTask> recurTasks){
+    public User(@JsonProperty("telegramId") String telegramId, @JsonProperty("notionToken") String notionToken, @JsonProperty("resourceStates") List<ResourceState> resourceStates){
         this.telegramId = telegramId;
-        this.recurTasks = recurTasks;
+        this.resourceStates = resourceStates;
         this.notionToken = notionToken;
     }
 
-    public User (String telegramId, List<RecurTask> recurTasks){
+    public User (String telegramId, List<ResourceState> resourceStates){
         this.telegramId = telegramId;
-        this.recurTasks = recurTasks;
+        this.resourceStates = resourceStates;
     }
     public String getNotionToken() {
         return notionToken;
@@ -35,28 +34,12 @@ public final class User {
         this.notionToken = notionToken;
     }
 
-    public void addNotification(RecurTask recurTask){
-        recurTasks.add(recurTask);
+    public void addNotification(ResourceState resourceState){
+        resourceStates.add(resourceState);
     }
-    public void addNotifications(List<RecurTask> recurTasks) {this.recurTasks.addAll(recurTasks);}
+    public void addNotifications(List<ResourceState> resourceStates) {this.resourceStates.addAll(resourceStates);}
 
-    public List<RecurTask> getNotifications(){
-        return Collections.unmodifiableList(recurTasks);
-    }
-
-    public boolean tryRemoveNotification(UUID uuid){
-        for (var notification :
-                recurTasks) {
-            if (notification.getUuid() == uuid) return true;
-        }
-        return false;
-    }
-
-    public RecurTask getNotificationByUuid(UUID uuid){
-        for (var notification :
-                recurTasks) {
-            if(notification.getUuid() == uuid) return notification;
-        }
-        return null;
+    public List<ResourceState> getResourceStates(){
+        return Collections.unmodifiableList(resourceStates);
     }
 }

@@ -4,7 +4,7 @@ import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskPlat
 
 import java.util.HashMap;
 
-public class PlannedTaskPlatformRepository {
+public final class PlannedTaskPlatformRepository {
     static private final HashMap<String, PlannedTaskPlatform> platforms = new HashMap<>();
 
     static public void addPlatform(String id, PlannedTaskPlatform platform){

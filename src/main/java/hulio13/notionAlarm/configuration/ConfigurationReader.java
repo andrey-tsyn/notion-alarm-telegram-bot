@@ -11,7 +11,6 @@ public class ConfigurationReader {
     static public Map<String, Object> readConfigurationFile(String path){
         // TODO: Some logging again
         try{
-            System.out.println("Working Directory = " + System.getProperty("user.dir"));
             File file = new File(path);
             return new ObjectMapper().readValue(file, HashMap.class);
         } catch (IOException e){

@@ -13,7 +13,7 @@ public final class PlannedTask {
     private int intervalToCheckInMinutes;
     private LocalDateTime nextResourceUpdateTime;
 
-    public PlannedTask(User user, String resourceName, PlannedTaskDescriptor plannedTaskDescriptor,
+    public PlannedTask(User user, PlannedTaskDescriptor plannedTaskDescriptor,
                        String notificationText, int intervalToCheckInMinutes, LocalDateTime nextResourceUpdateTime) {
         this.user = user;
         this.plannedTaskDescriptor = plannedTaskDescriptor;

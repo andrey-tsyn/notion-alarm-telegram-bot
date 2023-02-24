@@ -14,12 +14,12 @@ public final class PlannedTask {
     private LocalDateTime nextResourceUpdateTime;
 
     public PlannedTask(User user, PlannedTaskDescriptor plannedTaskDescriptor,
-                       String notificationText, int intervalToCheckInMinutes, LocalDateTime nextResourceUpdateTime) {
+                       String notificationText, int intervalToCheckInMinutes) {
         this.user = user;
         this.plannedTaskDescriptor = plannedTaskDescriptor;
         this.notificationText = notificationText;
         this.intervalToCheckInMinutes = intervalToCheckInMinutes;
-        this.nextResourceUpdateTime = nextResourceUpdateTime;
+        this.nextResourceUpdateTime = LocalDateTime.now().plusMinutes(intervalToCheckInMinutes);
     }
 
     public String getNotificationText() {

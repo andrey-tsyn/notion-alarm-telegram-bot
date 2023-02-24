@@ -1,52 +1,56 @@
-package hulio13.notionAlarm.core.entities;
+package hulio13.notionAlarm.core.entities.plannedTask;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import hulio13.notionAlarm.core.entities.User;
 
 import java.time.LocalDateTime;
 
-public class ResourceState {
+public final class PlannedTask {
     @JsonBackReference
     private User user;
-    public final String resourceName;
-    public final String linkToResource;
-    private String description;
+    private PlannedTaskDescriptor plannedTaskDescriptor;
+    private String notificationText;
     private int intervalToCheckInMinutes;
     private LocalDateTime nextResourceUpdateTime;
 
-    public ResourceState(User user, String resourceName, String linkToResource, String description, int intervalToCheckInMinutes, LocalDateTime nextResourceUpdateTime) {
+    public PlannedTask(User user, String resourceName, PlannedTaskDescriptor plannedTaskDescriptor,
+                       String notificationText, int intervalToCheckInMinutes, LocalDateTime nextResourceUpdateTime) {
         this.user = user;
-        this.resourceName = resourceName;
-        this.linkToResource = linkToResource;
-        this.description = description;
+        this.plannedTaskDescriptor = plannedTaskDescriptor;
+        this.notificationText = notificationText;
         this.intervalToCheckInMinutes = intervalToCheckInMinutes;
         this.nextResourceUpdateTime = nextResourceUpdateTime;
     }
 
-    public String getDescription() {
-        return description;
+    public String getNotificationText() {
+        return notificationText;
     }
 
     public int getIntervalToCheckInMinutes() {
         return intervalToCheckInMinutes;
     }
 
-    public LocalDateTime getNextResourceUpdateTime() {
+    public LocalDateTime getNextUpdateTime() {
         return nextResourceUpdateTime;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNotificationText(String notificationText) {
+        this.notificationText = notificationText;
     }
 
     public void setIntervalToCheckInMinutes(int intervalToCheckInMinutes) {
         this.intervalToCheckInMinutes = intervalToCheckInMinutes;
     }
 
-    public void moveNextResourceUpdateTime() {
+    public void setUpdateTimeToNull(){
+        nextResourceUpdateTime = null;
+    }
+
+    public void moveNextUpdateTime() {
         this.nextResourceUpdateTime = LocalDateTime.now().plusMinutes(intervalToCheckInMinutes);
     }
 
-    public void moveNextResourceUpdateTime(int intervalInMinutes) {
+    public void moveNextUpdateTime(int intervalInMinutes) {
         this.nextResourceUpdateTime = LocalDateTime.now().plusMinutes(intervalInMinutes);
     }
 

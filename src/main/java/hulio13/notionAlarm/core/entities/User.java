@@ -23,9 +23,8 @@ public final class User {
         this.notionToken = notionToken;
     }
 
-    public User (String telegramId, List<PlannedTask> plannedTasks){
-        this.telegramId = telegramId;
-        this.plannedTasks = plannedTasks;
+    public User (String telegramId, String notionToken){
+        this(telegramId, notionToken, new LinkedList<>());
     }
     public String getNotionToken() {
         return notionToken;
@@ -35,12 +34,12 @@ public final class User {
         this.notionToken = notionToken;
     }
 
-    public void addNotification(PlannedTask plannedTask){
+    public void addPlannedTask(PlannedTask plannedTask){
         plannedTasks.add(plannedTask);
     }
-    public void addNotifications(List<PlannedTask> plannedTasks) {this.plannedTasks.addAll(plannedTasks);}
+    public void addPlannedTasks(List<PlannedTask> plannedTasks) {this.plannedTasks.addAll(plannedTasks);}
 
-    public List<PlannedTask> getResourceStates(){
+    public List<PlannedTask> getPlannedTasks(){
         return Collections.unmodifiableList(plannedTasks);
     }
 }

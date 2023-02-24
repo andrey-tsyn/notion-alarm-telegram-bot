@@ -44,7 +44,7 @@ class UserJsonHandler {
             File file = new File(FOLDER_NAME + name + ".json");
             User user = objectMapper.readValue(file, User.class);
             for (var n :
-                    user.getResourceStates()) {
+                    user.getPlannedTasks()) {
                 n.setUserIfNull(user);
             }
             return user;

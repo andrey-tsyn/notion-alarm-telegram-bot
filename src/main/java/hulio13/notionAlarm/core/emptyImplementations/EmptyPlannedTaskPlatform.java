@@ -5,6 +5,6 @@ import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskPlat
 public class EmptyPlannedTaskPlatform implements PlannedTaskPlatform {
     @Override
     public String getId() {
-        return "Empty";
+        return "empty";
     }
 }

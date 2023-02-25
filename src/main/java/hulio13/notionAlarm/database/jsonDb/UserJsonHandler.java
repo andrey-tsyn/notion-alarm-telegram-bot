@@ -11,7 +11,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-class UserJsonHandler {
+final class UserJsonHandler {
     public static final String FOLDER_NAME = "OmegaSecureDatabase/";
     private ObjectMapper objectMapper;
     public UserJsonHandler() {
@@ -39,7 +39,7 @@ class UserJsonHandler {
         }
     }
 
-    public User deserializeFromFile(String name) throws EntityNotFoundException{
+    public User deserializeFromFile(String name) throws EntityNotFoundException, IOException {
         try{
             File file = new File(FOLDER_NAME + name + ".json");
             User user = objectMapper.readValue(file, User.class);
@@ -53,7 +53,7 @@ class UserJsonHandler {
             throw new EntityNotFoundException(name, "File does not exist");
         }
         catch (IOException e){
-            throw new EntityNotFoundException();
+            throw e;
         }
     }
 }

@@ -1,5 +1,6 @@
 package hulio13.notionAlarm.core.notifiers;
 
+import hulio13.notionAlarm.core.abstractions.PlannedTaskListener;
 import hulio13.notionAlarm.core.entities.plannedTask.PlannedTask;
 
 import java.util.*;
@@ -15,7 +16,7 @@ public final class PlannedTaskNotifier {
         }
     }
 
-    public void subscribe(hulio13.notionAlarm.core.abstractions.PlannedTaskListener listener, String... eventTypes){
+    public void subscribe(PlannedTaskListener listener, String... eventTypes){
         for (var eventType :
                 eventTypes) {
             if (!listeners.containsKey(eventType)) {
@@ -29,10 +30,10 @@ public final class PlannedTaskNotifier {
         listeners.remove(listener);
     }
     
-    public void notify(String eventType, List<PlannedTask> states){
-        for (var state :
-                states) {
-            notify(eventType, state);
+    public void notify(String eventType, List<PlannedTask> plannedTasks){
+        for (var plannedTask :
+                plannedTasks) {
+            notify(eventType, plannedTask);
         }
     }
     public void notify(String eventType, PlannedTask plannedTask){

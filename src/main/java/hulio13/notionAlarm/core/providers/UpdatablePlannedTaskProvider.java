@@ -9,8 +9,8 @@ public final class UpdatablePlannedTaskProvider {
     static public List<PlannedTask> getPlannedTasksToUpdate(List<PlannedTask> plannedTasks){
         var now = LocalDateTime.now();
         return plannedTasks.stream()
-                .filter(pt -> pt.getNextUpdateTime().isBefore(now)
-                        && pt.getNextUpdateTime() != null)
+                .filter(pt -> pt.getNextResourceUpdateTime().isBefore(now)
+                        && pt.getNextResourceUpdateTime() != null)
                 .toList();
     }
 }

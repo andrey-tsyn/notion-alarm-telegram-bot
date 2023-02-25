@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConfigurationReader {
+public final class ConfigurationReader {
     static public Map<String, Object> readConfigurationFile(String path){
         // TODO: Some logging again
         try{

@@ -20,7 +20,7 @@ public final class PlannedTaskProvider {
         synchronized (users){
             for (var user :
                     users) {
-                plannedTasks.addAll(user.getResourceStates());
+                plannedTasks.addAll(user.getPlannedTasks());
             }
         }
 

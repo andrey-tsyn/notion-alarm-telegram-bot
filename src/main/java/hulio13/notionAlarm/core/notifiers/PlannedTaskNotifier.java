@@ -30,10 +30,10 @@ public final class PlannedTaskNotifier {
         listeners.remove(listener);
     }
     
-    public void notify(String eventType, List<PlannedTask> plannedTasks){
-        for (var plannedTask :
-                plannedTasks) {
-            notify(eventType, plannedTask);
+    public void notify(String eventType, List<PlannedTask> states){
+        for (var state :
+                states) {
+            notify(eventType, state);
         }
     }
     public void notify(String eventType, PlannedTask plannedTask){

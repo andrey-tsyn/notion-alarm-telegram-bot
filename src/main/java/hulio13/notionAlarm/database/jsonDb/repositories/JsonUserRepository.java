@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.database.jsonDb;
+package hulio13.notionAlarm.database.jsonDb.repositories;
 
 import hulio13.notionAlarm.core.abstractions.UserRepository;
 import hulio13.notionAlarm.core.entities.User;

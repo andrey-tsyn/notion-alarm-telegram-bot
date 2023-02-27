@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.database.jsonDb;
+package hulio13.notionAlarm.database.jsonDb.providers;
 
 import java.io.IOException;
 import java.nio.file.Files;

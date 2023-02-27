@@ -1,15 +1,14 @@
-package hulio13.notionAlarm.database.jsonDb;
+package hulio13.notionAlarm.database.jsonDb.loaders;
 
 import hulio13.notionAlarm.database.exceptions.EntityNotFoundException;
 import hulio13.notionAlarm.core.entities.User;
+import hulio13.notionAlarm.database.jsonDb.providers.UserIdsProvider;
+import hulio13.notionAlarm.database.jsonDb.providers.UserJsonProvider;
+import hulio13.notionAlarm.database.jsonDb.providers.UserJsonSerializationProvider;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class JsonUserRepositoryLoader {
     static public List<User> loadUsers(String pathToFolder){

@@ -1,10 +1,10 @@
-package hulio13.notionAlarm.database.jsonDb;
+package hulio13.notionAlarm.database.jsonDb.initializers;
 
 import hulio13.notionAlarm.core.entities.User;
+import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
+import hulio13.notionAlarm.database.jsonDb.loaders.JsonUserRepositoryLoader;
 
 import java.util.List;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public final class JsonUserRepositoryInitializer {
     static public JsonUserRepository initialize(String databaseFolder, int intervalInMinutesToWriteInFolder){

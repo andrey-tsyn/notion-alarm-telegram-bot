@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.database.jsonDb;
+package hulio13.notionAlarm.database.jsonDb.providers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

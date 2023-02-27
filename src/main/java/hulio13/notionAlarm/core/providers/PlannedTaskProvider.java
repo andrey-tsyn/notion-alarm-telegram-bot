@@ -16,13 +16,9 @@ public final class PlannedTaskProvider {
     public List<PlannedTask> getPlannedTasks(){
         List<PlannedTask> plannedTasks = new ArrayList<>();
 
-        List<User> users = userRepository.getUsers();
-        synchronized (users){
-            for (var user :
-                    users) {
+        userRepository.forEach(user -> {
                 plannedTasks.addAll(user.getPlannedTasks());
-            }
-        }
+        });
 
         return plannedTasks;
     }

@@ -2,6 +2,7 @@ package hulio13.notionAlarm.database.jsonDb.repositories;
 
 import hulio13.notionAlarm.core.abstractions.UserRepository;
 import hulio13.notionAlarm.core.entities.User;
+import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
 
 import java.io.IOException;
 import java.nio.file.Files;

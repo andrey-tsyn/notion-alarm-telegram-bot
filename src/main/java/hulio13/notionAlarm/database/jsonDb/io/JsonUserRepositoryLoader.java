@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.database.jsonDb.loaders;
+package hulio13.notionAlarm.database.jsonDb.io;
 
 import hulio13.notionAlarm.database.exceptions.EntityNotFoundException;
 import hulio13.notionAlarm.core.entities.User;

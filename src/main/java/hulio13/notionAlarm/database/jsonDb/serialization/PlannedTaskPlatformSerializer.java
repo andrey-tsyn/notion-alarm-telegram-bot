@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.database.jsonDb.serializers;
+package hulio13.notionAlarm.database.jsonDb.serialization;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

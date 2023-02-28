@@ -1,9 +1,7 @@
 package hulio13.notionAlarm.core.entities.plannedTask;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskPlatform;
-import hulio13.notionAlarm.database.jsonDb.serializers.PlannedTaskPlatformSerializer;
 
 public final class PlannedTaskDescriptor {
     public final String linkToDatabase;

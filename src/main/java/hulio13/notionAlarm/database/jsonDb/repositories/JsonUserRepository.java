@@ -3,6 +3,7 @@ package hulio13.notionAlarm.database.jsonDb.repositories;
 import hulio13.notionAlarm.core.abstractions.UserRepository;
 import hulio13.notionAlarm.core.entities.User;
 import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
+import hulio13.notionAlarm.database.jsonDb.providers.UserJsonSerializationProvider;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,10 +13,12 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public final class JsonUserRepository implements UserRepository {
-    private List<User> users;
+    private final List<User> users;
+    private final UserToJsonSaver saver;
 
-    public JsonUserRepository(List<User> users) {
+    public JsonUserRepository(List<User> users, String pathToFolder) {
         this.users = users;
+        this.saver = new UserToJsonSaver(pathToFolder, this, new UserJsonSerializationProvider());
     }
 
     @Override
@@ -54,6 +57,7 @@ public final class JsonUserRepository implements UserRepository {
                 users.add(user);
             }
         }
+        saver.save(user);
     }
 
     @Override
@@ -61,5 +65,6 @@ public final class JsonUserRepository implements UserRepository {
         synchronized (users){
             users.add(user);
         }
+        saver.save(user);
     }
 }

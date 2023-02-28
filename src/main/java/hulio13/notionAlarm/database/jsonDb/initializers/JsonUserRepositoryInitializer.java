@@ -7,9 +7,9 @@ import hulio13.notionAlarm.database.jsonDb.io.JsonUserRepositoryLoader;
 import java.util.List;
 
 public final class JsonUserRepositoryInitializer {
-    static public JsonUserRepository initialize(String databaseFolder, int intervalInMinutesToWriteInFolder){
+    static public JsonUserRepository initialize(String databaseFolder){
         List<User> users = JsonUserRepositoryLoader.loadUsers(databaseFolder);
-        JsonUserRepository repository = new JsonUserRepository(users);
+        JsonUserRepository repository = new JsonUserRepository(users, databaseFolder);
 
         return repository;
     }

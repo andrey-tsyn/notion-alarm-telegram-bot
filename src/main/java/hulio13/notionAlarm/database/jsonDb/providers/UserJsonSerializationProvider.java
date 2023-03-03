@@ -26,7 +26,7 @@ public final class UserJsonSerializationProvider {
         }
     }
 
-    public User deserialize(String json) throws EntityNotFoundException, IOException {
+    public User deserialize(String json) throws JsonProcessingException {
         User user = objectMapper.readValue(json, User.class);
         for (var n :
                 user.getPlannedTasks()) {

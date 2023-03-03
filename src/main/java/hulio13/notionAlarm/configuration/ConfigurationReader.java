@@ -8,18 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class ConfigurationReader {
-    static public Map<String, Object> readConfigurationFile(String path){
+    static public Map<String, Object> readConfigurationFile(String path) throws IOException {
         // TODO: Some logging again
         try{
             File file = new File(path);
             return new ObjectMapper().readValue(file, HashMap.class);
         } catch (IOException e){
             System.out.println("Config file is not found or incorrect");
-            System.exit(-1);
+            throw new IOException(e);
         }
-        catch (Exception e){
-            throw e;
-        }
-        return null;
     }
 }

@@ -6,7 +6,7 @@
 └──notionAlarm
     ├── configuration - done
     ├── core - done
-    ├── database - in progress
+    ├── database - done
     ├── logger - not started
     └── notion - not started
     └── telegramBot - in progress

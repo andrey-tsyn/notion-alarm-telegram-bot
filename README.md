@@ -7,7 +7,6 @@
     ├── configuration - done
     ├── core - done
     ├── database - done
-    ├── logger - not started
     └── notion - not started
     └── telegramBot - in progress
         ├── inputHandlers

@@ -3,7 +3,6 @@ package hulio13.notionAlarm.database.jsonDb;
 import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

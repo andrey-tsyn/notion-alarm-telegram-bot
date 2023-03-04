@@ -57,7 +57,11 @@ public final class JsonUserRepository implements UserRepository {
                 users.add(user);
             }
         }
-        saver.save(user);
+        try {
+            saver.save(user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -65,6 +69,10 @@ public final class JsonUserRepository implements UserRepository {
         synchronized (users){
             users.add(user);
         }
-        saver.save(user);
+        try {
+            saver.save(user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

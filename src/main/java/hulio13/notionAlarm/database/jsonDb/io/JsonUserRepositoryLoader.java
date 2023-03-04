@@ -36,7 +36,7 @@ public final class JsonUserRepositoryLoader {
                 users.add(userJsonSerializationProvider.deserialize(jsonProvider.readJsonWithName(tgId)));
             }
             catch (JsonProcessingException e){
-                logger.warn(String.format("Incorrect format of json file or don't have necessary values. Error message: {}",
+                logger.warn(String.format("Incorrect format of json file or don't have necessary values. Error message: %s",
                         e.getMessage()));
             }
         }

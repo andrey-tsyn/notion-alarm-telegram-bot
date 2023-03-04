@@ -11,10 +11,11 @@ import java.util.List;
 
 public final class Bot extends TelegramLongPollingBot {
 
-    private static final String BOT_USERNAME = "kozirni_notion_alarm_bot";
+    private final String botUsername;
 
-    public Bot(String token) {
+    public Bot(String token, String botUsername) {
         super(token);
+        this.botUsername = botUsername;
     }
 
     @Override

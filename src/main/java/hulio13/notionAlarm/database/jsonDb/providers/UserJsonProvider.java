@@ -31,16 +31,12 @@ public final class UserJsonProvider {
         }
     }
 
-    public void writeJsonWithName(String name, String content){
+    public void writeJsonWithName(String name, String content) throws IOException {
         Path path = getPathWithName(name);
 
-        try {
-            FileWriter writer = new FileWriter(path.toFile());
-            writer.write(content);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        FileWriter writer = new FileWriter(path.toFile());
+        writer.write(content);
+        writer.close();
     }
 
     public void deleteJsonWithName(String name){

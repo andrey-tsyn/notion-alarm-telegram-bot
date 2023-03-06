@@ -6,8 +6,6 @@ import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
 import hulio13.notionAlarm.database.jsonDb.providers.UserJsonSerializationProvider;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;

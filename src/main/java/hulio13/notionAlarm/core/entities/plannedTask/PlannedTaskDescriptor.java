@@ -8,9 +8,9 @@ public final class PlannedTaskDescriptor {
 
     public final PlannedTaskPlatform platform;
 
-    public PlannedTaskDescriptor(@JsonProperty("linkToDatabase") String linkToDatabase,
+    public PlannedTaskDescriptor(@JsonProperty("linkToResource") String linkToResource,
                                  @JsonProperty("platform") PlannedTaskPlatform platform) {
-        this.linkToDatabase = linkToDatabase;
+        this.linkToDatabase = linkToResource;
         this.platform = platform;
     }
 }

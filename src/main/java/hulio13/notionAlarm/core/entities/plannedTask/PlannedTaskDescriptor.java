@@ -1,16 +1,16 @@
 package hulio13.notionAlarm.core.entities.plannedTask;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskPlatform;
+import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskHandler;
 
 public final class PlannedTaskDescriptor {
     public final String linkToDatabase;
 
-    public final PlannedTaskPlatform platform;
+    public final PlannedTaskHandler handler;
 
     public PlannedTaskDescriptor(@JsonProperty("linkToResource") String linkToResource,
-                                 @JsonProperty("platform") PlannedTaskPlatform platform) {
+                                 @JsonProperty("handler") PlannedTaskHandler handler) {
         this.linkToDatabase = linkToResource;
-        this.platform = platform;
+        this.handler = handler;
     }
 }

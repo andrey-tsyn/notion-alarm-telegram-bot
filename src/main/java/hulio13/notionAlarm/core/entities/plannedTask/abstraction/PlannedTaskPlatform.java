@@ -2,6 +2,7 @@ package hulio13.notionAlarm.core.entities.plannedTask.abstraction;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import hulio13.notionAlarm.core.entities.plannedTask.PlannedTask;
 import hulio13.notionAlarm.database.jsonDb.serialization.PlannedTaskPlatformDeserializer;
 import hulio13.notionAlarm.database.jsonDb.serialization.PlannedTaskPlatformSerializer;
 
@@ -9,4 +10,5 @@ import hulio13.notionAlarm.database.jsonDb.serialization.PlannedTaskPlatformSeri
 @JsonDeserialize(using = PlannedTaskPlatformDeserializer.class)
 public interface PlannedTaskPlatform {
     String getId();
+    public boolean isTaskNeedsUpdate(PlannedTask plannedTask);
 }

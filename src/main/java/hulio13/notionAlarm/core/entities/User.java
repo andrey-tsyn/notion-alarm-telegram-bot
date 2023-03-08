@@ -7,7 +7,7 @@ import java.util.*;
 
 public final class User {
     public final String telegramId;
-    private String notionToken;
+    private Map<String, String> tokens;
     @JsonManagedReference
     private final List<PlannedTask> plannedTasks;
 
@@ -17,21 +17,24 @@ public final class User {
     }
 
     @JsonCreator
-    public User(@JsonProperty("telegramId") String telegramId, @JsonProperty("notionToken") String notionToken, @JsonProperty("resourceStates") List<PlannedTask> plannedTasks){
+    public User(@JsonProperty("telegramId") String telegramId, @JsonProperty("tokens") Map<String, String> tokens, @JsonProperty("plannedTasks") List<PlannedTask> plannedTasks){
         this.telegramId = telegramId;
         this.plannedTasks = plannedTasks;
-        this.notionToken = notionToken;
+        this.tokens = tokens;
     }
 
-    public User (String telegramId, String notionToken){
-        this(telegramId, notionToken, new LinkedList<>());
+    public User (String telegramId, Map<String, String> tokens){
+        this(telegramId, tokens, new LinkedList<>());
     }
-    public String getNotionToken() {
-        return notionToken;
+    public String getTokenById(String id) {
+        return tokens.get(id);
     }
 
-    public void setNotionToken(String notionToken) {
-        this.notionToken = notionToken;
+    public void addToken(String id, String token) {
+        tokens.put(id, token);
+    }
+    public void removeToken(String id) {
+        tokens.remove(id);
     }
 
     public void addPlannedTask(PlannedTask plannedTask){

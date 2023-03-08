@@ -10,7 +10,12 @@ public final class EmptyPlannedTaskPlatform implements PlannedTaskPlatform {
     }
 
     @Override
-    public boolean isTaskNeedsUpdate(PlannedTask plannedTask) {
+    public boolean checkIsTaskNeedsUpdate(PlannedTask plannedTask) {
         return false;
+    }
+
+    @Override
+    public void updateTask(PlannedTask plannedTask) {
+
     }
 }

@@ -13,10 +13,17 @@ public class NotionDatabaseUpdateDateProvider {
     private static Logger logger = LoggerFactory.getLogger(NotionDatabaseUpdateDateProvider.class);
 
     static public Result<LocalDateTime> getDate(PlannedTask task){
-        NotionClient client = new NotionClient(task.getUser().getTokenById("notion"));
+        String token, linkToDatabase;
+
+        synchronized (task){
+            token = task.getUser().getTokenById("notion");
+            linkToDatabase = task.getPlannedTaskDescriptor().dataForAccess;
+        }
+
+        NotionClient client = new NotionClient(token);
 
         try{
-            String data = client.retrieveDatabase(task.getPlannedTaskDescriptor().dataForAccess).getLastEditedTime();
+            String data = client.retrieveDatabase(linkToDatabase).getLastEditedTime();
             LocalDateTime dateTime = LocalDateTime.parse(data.replace("Z", ""));
             return new Result<>(true, dateTime, null, null);
         }

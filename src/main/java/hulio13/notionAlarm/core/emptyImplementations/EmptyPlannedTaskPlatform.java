@@ -1,5 +1,6 @@
 package hulio13.notionAlarm.core.emptyImplementations;
 
+import hulio13.notionAlarm.core.Result;
 import hulio13.notionAlarm.core.entities.plannedTask.PlannedTask;
 import hulio13.notionAlarm.core.entities.plannedTask.abstraction.PlannedTaskPlatform;
 
@@ -10,12 +11,12 @@ public final class EmptyPlannedTaskPlatform implements PlannedTaskPlatform {
     }
 
     @Override
-    public boolean checkIsTaskNeedsUpdate(PlannedTask plannedTask) {
-        return false;
+    public Result<Boolean> checkIsTaskNeedsUpdate(PlannedTask plannedTask) {
+        return null;
     }
 
     @Override
-    public void updateTask(PlannedTask plannedTask) {
-
+    public Result<Void> updateTask(PlannedTask plannedTask) {
+        return null;
     }
 }

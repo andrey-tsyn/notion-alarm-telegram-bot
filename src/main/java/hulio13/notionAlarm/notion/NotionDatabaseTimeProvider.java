@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
-public class NotionDatabaseUpdateDateProvider {
-    private static Logger logger = LoggerFactory.getLogger(NotionDatabaseUpdateDateProvider.class);
+public class NotionDatabaseTimeProvider {
+    private static Logger logger = LoggerFactory.getLogger(NotionDatabaseTimeProvider.class);
 
-    static public Result<LocalDateTime> getDate(PlannedTask task){
+    static public Result<LocalDateTime> getLastEditedDate(PlannedTask task){
         String token, linkToDatabase;
 
         synchronized (task){
@@ -30,7 +30,7 @@ public class NotionDatabaseUpdateDateProvider {
         catch (NotionAPIError e){
             if (e.getError().getStatus() == 401){
                 return new Result<>(false, null, "notion_unauthorized",
-                        "Unauthorized, maybe invalid token");
+                        "Unauthorized, maybe invalid token.");
             }
             if (e.getError().getStatus() == 404){
                 return new Result<>(false, null, "notion_not_found",

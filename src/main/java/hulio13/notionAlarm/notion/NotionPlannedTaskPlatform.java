@@ -28,9 +28,4 @@ public class NotionPlannedTaskPlatform implements PlannedTaskPlatform {
             return new Result<>(true, true, null, null);
         }
     }
-
-    @Override
-    public Result<Void> updateTask(PlannedTask plannedTask) {
-        return null;
-    }
 }

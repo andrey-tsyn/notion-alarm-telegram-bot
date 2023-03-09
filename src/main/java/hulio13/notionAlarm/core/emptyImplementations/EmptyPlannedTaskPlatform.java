@@ -15,8 +15,4 @@ public final class EmptyPlannedTaskPlatform implements PlannedTaskPlatform {
         return null;
     }
 
-    @Override
-    public Result<Void> updateTask(PlannedTask plannedTask) {
-        return null;
-    }
 }

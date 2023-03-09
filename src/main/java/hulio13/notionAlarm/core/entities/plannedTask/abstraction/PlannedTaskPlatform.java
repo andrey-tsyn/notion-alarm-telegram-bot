@@ -12,5 +12,4 @@ import hulio13.notionAlarm.database.jsonDb.serialization.PlannedTaskPlatformSeri
 public interface PlannedTaskPlatform {
     String getId();
     Result<Boolean> checkIsTaskNeedsUpdate(PlannedTask plannedTask);
-    Result<Void> updateTask(PlannedTask plannedTask);
 }

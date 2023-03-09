@@ -7,7 +7,7 @@
     ├── configuration - done
     ├── core - done
     ├── database - done
-    ├── notion - in progress
+    ├── notion - done
     └── telegramBot - in progress
         ├── inputHandlers
         └── localization - done(not tested)

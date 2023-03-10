@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import hulio13.notionAlarm.core.entities.User;
 
-public final class UserJsonSerializationProvider {
-    private ObjectMapper objectMapper;
-    public UserJsonSerializationProvider() {
+public final class UserJsonSerialization {
+    private final ObjectMapper objectMapper;
+    public UserJsonSerialization() {
         objectMapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);

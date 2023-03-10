@@ -5,8 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import hulio13.notionAlarm.core.entities.User;
+import hulio13.notionAlarm.database.jsonDb.serialization.abstractions.JsonSerialization;
+import hulio13.notionAlarm.database.jsonDb.serialization.exceptions.JsonReadException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public final class UserJsonSerialization {
+public final class UserJsonSerialization implements JsonSerialization<User> {
+    private static final Logger logger = LoggerFactory.getLogger(UserJsonSerialization.class);
     private final ObjectMapper objectMapper;
     public UserJsonSerialization() {
         objectMapper = new ObjectMapper()
@@ -23,8 +28,13 @@ public final class UserJsonSerialization {
         }
     }
 
-    public User deserialize(String json) throws JsonProcessingException {
-        User user = objectMapper.readValue(json, User.class);
+    public User deserialize(String json) throws JsonReadException {
+        User user = null;
+        try {
+            user = objectMapper.readValue(json, User.class);
+        } catch (JsonProcessingException e) {
+            throw new JsonReadException(e);
+        }
         for (var n :
                 user.getPlannedTasks()) {
             n.setUserIfNull(user);

@@ -1,19 +1,15 @@
 package hulio13.notionAlarm.database.jsonDb.providers;
 
-import hulio13.notionAlarm.database.exceptions.EntityNotFoundException;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public final class UserJsonProvider {
+public final class JsonProvider {
     private final String pathToFolder;
 
-    public UserJsonProvider(String pathToFolder) {
+    public JsonProvider(String pathToFolder) {
         this.pathToFolder = pathToFolder;
     }
 

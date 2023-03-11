@@ -1,8 +1,8 @@
 package hulio13.notionAlarm.database.jsonDb.io;
 
 import hulio13.notionAlarm.core.entities.User;
-import hulio13.notionAlarm.database.jsonDb.providers.UserJsonProvider;
-import hulio13.notionAlarm.database.jsonDb.providers.UserJsonSerializationProvider;
+import hulio13.notionAlarm.database.jsonDb.providers.JsonProvider;
+import hulio13.notionAlarm.database.jsonDb.serialization.UserJsonSerialization;
 import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,14 +10,14 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 public class UserToJsonSaver {
-    private final UserJsonProvider provider;
+    private final JsonProvider provider;
     private final JsonUserRepository repository;
-    private final UserJsonSerializationProvider serializationProvider;
+    private final UserJsonSerialization serializationProvider;
     static private final Logger logger = LoggerFactory.getLogger(UserToJsonSaver.class);
 
     public UserToJsonSaver(String pathToFolder, JsonUserRepository jsonUserRepository,
-                           UserJsonSerializationProvider serializationProvider) {
-        this.provider = new UserJsonProvider(pathToFolder);
+                           UserJsonSerialization serializationProvider) {
+        this.provider = new JsonProvider(pathToFolder);
         this.repository = jsonUserRepository;
         this.serializationProvider = serializationProvider;
     }

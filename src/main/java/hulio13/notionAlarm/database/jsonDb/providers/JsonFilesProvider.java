@@ -9,11 +9,15 @@ import java.util.stream.Collectors;
 
 public class JsonFilesProvider {
     static public List<String> getFileListFromFolder(String pathToFolder) throws IOException {
-        List<String> telegramIds = Files.list(Paths.get(pathToFolder))
+        Path path = Paths.get(pathToFolder);
+        if (!Files.exists(path)){
+            Files.createDirectory(path);
+        }
+        List<String> fileNames = Files.list(path)
                 .map(Path::toFile)
                 .filter(file -> file.getName().endsWith(".json"))
                 .map(f -> f.getName().replace(".json", ""))
                 .collect(Collectors.toList());
-        return telegramIds;
+        return fileNames;
     }
 }

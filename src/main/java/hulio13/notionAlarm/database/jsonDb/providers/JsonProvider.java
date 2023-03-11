@@ -13,8 +13,8 @@ public final class JsonProvider {
         this.pathToFolder = pathToFolder;
     }
 
-    public String readJsonWithName(String name){
-        Path path = getPathWithName(name);
+    public String readJsonWithName(String fileName){
+        Path path = getPathWithName(fileName);
 
         if (!path.isAbsolute()){
             throw new IllegalArgumentException();
@@ -27,23 +27,23 @@ public final class JsonProvider {
         }
     }
 
-    public void writeJsonWithName(String name, String content) throws IOException {
-        Path path = getPathWithName(name);
+    public void writeJsonWithName(String fileName, String content) throws IOException {
+        Path path = getPathWithName(fileName);
 
         FileWriter writer = new FileWriter(path.toFile());
         writer.write(content);
         writer.close();
     }
 
-    public void deleteJsonWithName(String name){
+    public void deleteJsonWithName(String fileName){
         try {
-            Files.delete(getPathWithName(name));
+            Files.delete(getPathWithName(fileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private Path getPathWithName(String name){
-        return Paths.get(pathToFolder, name+".json");
+    private Path getPathWithName(String fileName){
+        return Paths.get(pathToFolder, fileName+".json");
     }
 }

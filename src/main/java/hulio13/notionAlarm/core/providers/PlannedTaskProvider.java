@@ -2,21 +2,20 @@ package hulio13.notionAlarm.core.providers;
 
 import hulio13.notionAlarm.core.abstractions.UserRepository;
 import hulio13.notionAlarm.core.entities.plannedTask.PlannedTask;
-import hulio13.notionAlarm.core.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class PlannedTaskProvider {
-    private final UserRepository userRepository;
+    private final UserRepository repository;
 
-    public PlannedTaskProvider(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public PlannedTaskProvider(UserRepository repository) {
+        this.repository = repository;
     }
     public List<PlannedTask> getPlannedTasks(){
         List<PlannedTask> plannedTasks = new ArrayList<>();
 
-        userRepository.forEach(user -> {
+        repository.forEach(user -> {
                 plannedTasks.addAll(user.getPlannedTasks());
         });
 

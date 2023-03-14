@@ -37,10 +37,10 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean remove(User user) {
+    public boolean remove(Predicate<User> predicate) {
         boolean isRemoved;
         synchronized (users){
-            isRemoved = users.remove(user);
+            isRemoved = users.removeIf(predicate);
         }
         return isRemoved;
     }

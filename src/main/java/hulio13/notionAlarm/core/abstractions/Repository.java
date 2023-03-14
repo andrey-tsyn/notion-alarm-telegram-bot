@@ -10,7 +10,7 @@ public interface Repository<T> {
 
     T get(Predicate<T> predicate);
 
-    boolean remove(T obj);
+    boolean remove(Predicate<T> predicate);
 
     void update(T obj);
 

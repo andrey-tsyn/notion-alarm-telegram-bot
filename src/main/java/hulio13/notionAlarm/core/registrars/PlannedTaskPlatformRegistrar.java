@@ -6,7 +6,6 @@ import hulio13.notionAlarm.notion.NotionPlannedTaskPlatform;
 
 public final class PlannedTaskPlatformRegistrar {
     static public void registerPlatforms(){
-        // TODO: add notion platform
         PlannedTaskPlatformRepository.addPlatform(new EmptyPlannedTaskPlatform().getId(), new EmptyPlannedTaskPlatform());
         PlannedTaskPlatformRepository.addPlatform(new NotionPlannedTaskPlatform().getId(), new NotionPlannedTaskPlatform());
     }

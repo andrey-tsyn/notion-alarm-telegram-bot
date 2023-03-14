@@ -29,7 +29,7 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     @Override
-    public User getUser(Predicate<User> predicate) {
+    public User get(Predicate<User> predicate) {
         synchronized (users){
             User user = users.stream().filter(predicate).findFirst().get();
             return user;
@@ -37,7 +37,7 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean removeUser(User user) {
+    public boolean remove(User user) {
         boolean isRemoved;
         synchronized (users){
             isRemoved = users.remove(user);
@@ -46,9 +46,9 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void update(User user) {
         synchronized (users){
-            User listUser = getUser(u -> u.telegramId.equals(user.telegramId));
+            User listUser = get(u -> u.telegramId.equals(user.telegramId));
 
             if (user != listUser){
                 users.remove(listUser);
@@ -63,7 +63,7 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     @Override
-    public void addUser(User user) {
+    public void add(User user) {
         synchronized (users){
             users.add(user);
         }

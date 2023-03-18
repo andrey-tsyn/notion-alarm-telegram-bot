@@ -16,10 +16,7 @@ import java.util.stream.Collectors;
 public final class JsonUserRepositoryInitializer {
     static public JsonUserRepository initialize(String databaseFolder, int delayToSaveInFolder, TimeUnit timeUnit){
 
-        List<User> users = JsonRepositoryLoader.load(databaseFolder, new UserJsonSerialization())
-                .stream()
-                .map(o -> (User) o)
-                .collect(Collectors.toCollection(LinkedList::new));
+        List<User> users = new JsonRepositoryLoader<User>().load(databaseFolder, new UserJsonSerialization());
 
         JsonUserRepository repository = new JsonUserRepository(users, databaseFolder);
         JsonSaver saver = new UserJsonSaver(databaseFolder, repository, new UserJsonSerialization());

@@ -11,9 +11,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class JsonRepositoryLoader{
+public final class JsonRepositoryLoader<T>{
     private static Logger logger = LoggerFactory.getLogger(JsonRepositoryLoader.class);
-    static public List<Object> load(String pathToFolder, JsonSerialization jsonSerialization){
+    public List<T> load(String pathToFolder, JsonSerialization<T> jsonSerialization){
         List<String> fileNames;
 
         try{
@@ -24,15 +24,18 @@ public final class JsonRepositoryLoader{
             throw new RuntimeException(e);
         }
 
-        List<Object> objects = new LinkedList<>();
+        List<T> objects = new LinkedList<>();
         JsonProvider jsonProvider = new JsonProvider(pathToFolder);
         for (var fileName :
                 fileNames) {
             try{
-                objects.add(jsonSerialization.deserialize(jsonProvider.readJsonWithName(fileName)));
+                objects.add((T) jsonSerialization.deserialize(jsonProvider.readJsonWithName(fileName)));
             }
             catch (JsonReadException e){
                 logger.warn(String.format("Incorrect format of json file or don't have necessary values. Error message: " + e.getMessage()));
+            }
+            catch (ClassCastException e){
+                logger.error("");
             }
         }
 

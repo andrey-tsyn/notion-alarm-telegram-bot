@@ -49,7 +49,7 @@ public final class JsonUserRepository implements UserRepository {
     @Override
     public void update(User user) {
         synchronized (users){
-            User listUser = get(u -> u.telegramId.equals(user.telegramId));
+            User listUser = get(u -> u.id.equals(user.id));
 
             if (user != listUser){
                 users.remove(listUser);
@@ -57,7 +57,7 @@ public final class JsonUserRepository implements UserRepository {
             }
         }
         try {
-            saver.save(user, user.telegramId);
+            saver.save(user, user.id);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -69,7 +69,7 @@ public final class JsonUserRepository implements UserRepository {
             users.add(user);
         }
         try {
-            saver.save(user, user.telegramId);
+            saver.save(user, user.id);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -14,7 +14,7 @@ public final class UserJsonSaver extends JsonSaver<User>{
     public void saveAll() {
         repository.forEach(user -> {
             try {
-                save(user, user.telegramId);
+                save(user, user.id);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

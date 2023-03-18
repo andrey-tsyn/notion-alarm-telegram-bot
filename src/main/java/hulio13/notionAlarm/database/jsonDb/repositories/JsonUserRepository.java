@@ -2,7 +2,8 @@ package hulio13.notionAlarm.database.jsonDb.repositories;
 
 import hulio13.notionAlarm.core.abstractions.UserRepository;
 import hulio13.notionAlarm.core.entities.User;
-import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
+import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
+import hulio13.notionAlarm.database.jsonDb.io.UserJsonSaver;
 import hulio13.notionAlarm.database.jsonDb.serialization.UserJsonSerialization;
 
 import java.io.IOException;
@@ -12,11 +13,11 @@ import java.util.function.Predicate;
 
 public final class JsonUserRepository implements UserRepository {
     private final List<User> users;
-    private final UserToJsonSaver saver;
+    private final JsonSaver saver;
 
     public JsonUserRepository(List<User> users, String pathToFolder) {
         this.users = users;
-        this.saver = new UserToJsonSaver(pathToFolder, this, new UserJsonSerialization());
+        this.saver = new UserJsonSaver(pathToFolder, this, new UserJsonSerialization());
     }
 
     @Override
@@ -56,7 +57,7 @@ public final class JsonUserRepository implements UserRepository {
             }
         }
         try {
-            saver.save(user);
+            saver.save(user, user.telegramId);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -68,7 +69,7 @@ public final class JsonUserRepository implements UserRepository {
             users.add(user);
         }
         try {
-            saver.save(user);
+            saver.save(user, user.telegramId);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

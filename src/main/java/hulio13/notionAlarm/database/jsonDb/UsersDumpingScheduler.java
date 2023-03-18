@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.database.jsonDb;
 
-import hulio13.notionAlarm.database.jsonDb.io.UserToJsonSaver;
+import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Executors;
@@ -8,7 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public final class UsersDumpingScheduler {
-    static public void start(UserToJsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit){
+    static public void start(JsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit){
         Thread saveThread = new Thread(() -> {
             try {
                 saver.saveAll();

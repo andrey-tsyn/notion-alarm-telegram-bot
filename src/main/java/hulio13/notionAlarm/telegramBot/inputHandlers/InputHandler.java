@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.telegramBot.inputHandlers;
 
-import hulio13.notionAlarm.telegramBot.userInfo.TgUserProperties;
+import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 public interface InputHandler {
     String getId();

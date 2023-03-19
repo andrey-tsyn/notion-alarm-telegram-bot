@@ -1,10 +1,10 @@
-package hulio13.notionAlarm.telegramBot.userInfo.database.jsonDb;
+package hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hulio13.notionAlarm.database.jsonDb.serialization.abstractions.JsonSerialization;
 import hulio13.notionAlarm.database.jsonDb.serialization.exceptions.JsonReadException;
-import hulio13.notionAlarm.telegramBot.userInfo.TgUserProperties;
+import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 public final class TgUserPropertiesSerialization implements JsonSerialization<TgUserProperties> {
     private final ObjectMapper objectMapper;

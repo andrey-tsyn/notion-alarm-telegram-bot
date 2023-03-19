@@ -2,7 +2,7 @@ package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.abstract
 
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
 import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.userInfo.TgUserProperties;
+import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 public abstract class InputHandlerWrapper implements InputHandler {
     private InputHandler inputHandler;

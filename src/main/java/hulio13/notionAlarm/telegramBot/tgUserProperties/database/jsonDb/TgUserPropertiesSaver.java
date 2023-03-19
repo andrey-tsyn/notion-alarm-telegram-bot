@@ -1,9 +1,9 @@
-package hulio13.notionAlarm.telegramBot.userInfo.database.jsonDb;
+package hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb;
 
 import hulio13.notionAlarm.core.abstractions.Repository;
 import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
 import hulio13.notionAlarm.database.jsonDb.serialization.abstractions.JsonSerialization;
-import hulio13.notionAlarm.telegramBot.userInfo.TgUserProperties;
+import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 import java.io.IOException;
 

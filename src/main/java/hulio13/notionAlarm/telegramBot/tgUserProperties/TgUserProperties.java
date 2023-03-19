@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.telegramBot.userInfo;
+package hulio13.notionAlarm.telegramBot.tgUserProperties;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -12,6 +12,28 @@ public final class InputHandlerRegistrar {
     private static Logger logger = LoggerFactory.getLogger(InputHandlerRegistrar.class);
 
     public static void registerHandlers(){
+        registerWithAnnotations();
     }
+
+    private static void registerWithAnnotations(){
+        Reflections reflections = new Reflections("hulio13.notionAlarm.telegramBot");
+
+        Set<Class<?>> set = reflections.getTypesAnnotatedWith(InputHandlerMarker.class);
+
+        for (var clazz : set) {
+            try {
+                Constructor<?> ctor = clazz.getConstructor();
+                InputHandler inputHandler = (InputHandler) ctor.newInstance();
+                InputHandlersRepository.addHandler(clazz.getSimpleName(), inputHandler);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException
+                     | InvocationTargetException | IllegalArgumentException e) {
+                logger.error("Class " + clazz.getName() + "has not constructor with no args or is not a class.");
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private String getPackageName(){
+        return this.getClass().getPackageName();
     }
 }

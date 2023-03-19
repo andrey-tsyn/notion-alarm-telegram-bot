@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.telegramBot.localization.entities;
 
-import java.util.Map;
+import org.apache.commons.collections4.BidiMap;
 
-public record Language(String langTag, Map<String, String> phrases) {
+public record Language(String langTag, BidiMap<String, String> phrases) {
 }

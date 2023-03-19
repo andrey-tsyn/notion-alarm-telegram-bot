@@ -25,4 +25,8 @@ public abstract class InputHandlerWrapper implements InputHandler {
     public MessageContainer getMessageForUser() {
         return inputHandler.getMessageForUser();
     }
+
+    protected InputHandler getInputHandler(){
+        return inputHandler;
+    }
 }

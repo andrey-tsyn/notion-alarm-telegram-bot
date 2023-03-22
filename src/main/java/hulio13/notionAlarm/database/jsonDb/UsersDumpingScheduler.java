@@ -36,6 +36,8 @@ public final class UsersDumpingScheduler {
             }
         };
 
+        saveThread.setUncaughtExceptionHandler(handler);
+
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         executorService.scheduleAtFixedRate(
                 saveThread,

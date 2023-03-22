@@ -1,6 +1,7 @@
 package hulio13.notionAlarm.database.jsonDb;
 
 import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Executors;
@@ -8,6 +9,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public final class UsersDumpingScheduler {
+
+    private static final Logger logger = LoggerFactory.getLogger(UsersDumpingScheduler.class);
+
     static public void start(JsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit){
         Thread saveThread = new Thread(() -> {
             try {
@@ -21,7 +25,7 @@ public final class UsersDumpingScheduler {
         Thread.UncaughtExceptionHandler handler = new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
-                LoggerFactory.getLogger(UsersDumpingScheduler.class).error(String.format(
+                logger.error(String.format(
                         "Can't save users. Thread with saver killed. Exception message: %s", e.getMessage()
                 ));
                 try {

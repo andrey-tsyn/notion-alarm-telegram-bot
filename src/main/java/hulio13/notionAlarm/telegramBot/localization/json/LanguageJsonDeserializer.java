@@ -35,10 +35,13 @@ public class LanguageJsonDeserializer extends StdDeserializer<Language> {
         DualHashBidiMap<String, String> buttonBidiMap = new DualHashBidiMap();
         DualHashBidiMap<String, String> phrasesBidiMap = new DualHashBidiMap<>();
 
-        JsonNode buttonNode = node.get("buttons");
-        process(buttonBidiMap, "", buttonNode, true);
+        logger.debug("Phrases deserialization.");
         JsonNode phraseNode = node.get("phrases");
         process(phrasesBidiMap, "", phraseNode, true);
+
+        logger.debug("Buttons deserialization.");
+        JsonNode buttonNode = node.get("buttons");
+        process(buttonBidiMap, "", buttonNode, true);
 
         Language lang = new Language(langTag, phrasesBidiMap, buttonBidiMap);
         logger.debug("Language with tag " + "\"" + langTag + "\" deserialized.");

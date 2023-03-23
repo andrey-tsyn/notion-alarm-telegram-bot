@@ -24,6 +24,8 @@ public final class InputHandlerRegistrar {
             try {
                 Constructor<?> ctor = clazz.getConstructor();
                 InputHandler inputHandler = (InputHandler) ctor.newInstance();
+                logger.debug("Input handler with id \"" + inputHandler.getId()
+                + "\" added.");
                 InputHandlersRepository.addHandler(clazz.getSimpleName(), inputHandler);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException
                      | InvocationTargetException | IllegalArgumentException e) {
@@ -31,9 +33,6 @@ public final class InputHandlerRegistrar {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    private String getPackageName(){
-        return this.getClass().getPackageName();
+        logger.info("Input handlers registered.");
     }
 }

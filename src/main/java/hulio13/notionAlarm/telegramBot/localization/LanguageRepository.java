@@ -25,7 +25,9 @@ public final class LanguageRepository {
 
         langs.addAll(languages);
 
-        var defaultLang = langs.stream().filter(l -> l.langTag().equals(defaultLanguageTag)).findFirst();
+        var defaultLang = langs.stream()
+                .filter(l -> l.langTag().equals(defaultLanguageTag))
+                .findFirst();
 
         if (defaultLang.isPresent()){
             LanguageRepository.defaultLang = defaultLang.get();

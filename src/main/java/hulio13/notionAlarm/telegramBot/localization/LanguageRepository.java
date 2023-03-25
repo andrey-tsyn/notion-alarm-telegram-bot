@@ -25,8 +25,10 @@ public final class LanguageRepository {
 
         langs.addAll(languages);
 
-        if (langs.contains(defaultLanguageTag)){
-            defaultLang = langs.stream().filter(l -> l.langTag().equals(defaultLanguageTag)).findFirst().get();
+        var defaultLang = langs.stream().filter(l -> l.langTag().equals(defaultLanguageTag)).findFirst();
+
+        if (defaultLang.isPresent()){
+            LanguageRepository.defaultLang = defaultLang.get();
         }
         else{
             throw new LanguageTagNotFoundException("Default language tag not found");

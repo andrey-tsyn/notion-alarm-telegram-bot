@@ -29,19 +29,19 @@ public final class Result<T> {
         this(false, null, error, message);
     }
 
-    public boolean getIsSuccess() {
+    public boolean isSuccess() {
         return isSuccess;
     }
 
-    public T getObject() {
+    public T object() {
         return object;
     }
 
-    public String getError() {
+    public String error() {
         return error;
     }
 
-    public String getMessage() {
+    public String message() {
         return message;
     }
 

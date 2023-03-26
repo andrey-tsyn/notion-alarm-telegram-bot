@@ -17,12 +17,12 @@ public class NotionPlannedTaskPlatform implements PlannedTaskPlatform {
     public Result<Boolean> checkIsTaskNeedsUpdate(PlannedTask plannedTask) {
         Result<LocalDateTime> lastEditTime = NotionDatabaseTimeProvider.getLastEditedDate(plannedTask);
 
-        if (!lastEditTime.getIsSuccess()){
-            return new Result<>(false, false, lastEditTime.getError(), lastEditTime.getMessage());
+        if (!lastEditTime.isSuccess()){
+            return new Result<>(false, false, lastEditTime.error(), lastEditTime.message());
         }
 
         synchronized (plannedTask){
-            if(lastEditTime.getObject().plusMinutes(plannedTask.getIntervalToCheckInMinutes()).isBefore(LocalDateTime.now())){
+            if(lastEditTime.object().plusMinutes(plannedTask.getIntervalToCheckInMinutes()).isBefore(LocalDateTime.now())){
                 return new Result<>(true, false, null, null);
             }
             return new Result<>(true, true, null, null);

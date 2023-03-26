@@ -1,5 +1,6 @@
 package hulio13.notionAlarm.telegramBot.localization;
 
+import hulio13.notionAlarm.core.Result;
 import hulio13.notionAlarm.exceptions.NotInitializedException;
 import hulio13.notionAlarm.telegramBot.localization.entities.Language;
 import hulio13.notionAlarm.telegramBot.localization.exceptions.LanguageTagNotFoundException;
@@ -76,7 +77,7 @@ public final class LocalizationService {
         return phrase;
     }
 
-    public static String getButtonByValue(String langTag, String buttonValue){
+    public static Result<String> getButtonByValue(String langTag, String buttonValue){
         throwExceptionIfNotInitialized();
 
         Language lang = repository.getLanguageByLanguageTag(langTag);
@@ -87,7 +88,7 @@ public final class LocalizationService {
         if (button == null){
             button = repository.getDefaultLang().buttons().getKey(buttonValue);
             if (button != null){
-                return button;
+                return new Result<String>(true, button);
             }
             throw new NotFoundException("Button not found in default lang and lang " +
                     "with '" + langTag +"' language tag.");

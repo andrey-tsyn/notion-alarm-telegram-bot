@@ -20,7 +20,7 @@ public final class LocalizationService {
         isInitialized = true;
     }
 
-    public static String getPhraseById(String langTag, String phraseId){
+    public static Result<String> getPhraseById(String langTag, String phraseId){
         throwExceptionIfNotInitialized();
 
         Language lang = repository.getLanguageByLanguageTag(langTag);
@@ -31,15 +31,15 @@ public final class LocalizationService {
         if (phrase == null){
             phrase = repository.getDefaultLang().phrases().get(phraseId);
             if (phrase != null){
-                return phrase;
+                return new Result<>(phrase);
             }
-            throw new NotFoundException("Phrase not found in default lang and lang " +
+            return new Result<>("not_found", "Phrase not found in default lang and lang " +
                     "with '" + langTag +"' language tag.");
         }
-        return phrase;
+        return new Result<>(phrase);
     }
 
-    public static String getButtonById(String langTag, String buttonId){
+    public static Result<String> getButtonById(String langTag, String buttonId){
         throwExceptionIfNotInitialized();
 
         Language lang = repository.getLanguageByLanguageTag(langTag);
@@ -50,15 +50,15 @@ public final class LocalizationService {
         if (button == null){
             button = repository.getDefaultLang().buttons().get(buttonId);
             if (button != null){
-                return button;
+                return new Result<>(button);
             }
-            throw new NotFoundException("Button not found in default lang and lang " +
+            return new Result<>("not_found", "Button not found in default lang and lang " +
                     "with '" + langTag +"' language tag.");
         }
-        return button;
+        return new Result<>(button);
     }
 
-    public static String getPhraseByValue(String langTag, String phraseValue){
+    public static Result<String> getPhraseByValue(String langTag, String phraseValue){
         throwExceptionIfNotInitialized();
 
         Language lang = repository.getLanguageByLanguageTag(langTag);
@@ -69,12 +69,12 @@ public final class LocalizationService {
         if (phrase == null){
             phrase = repository.getDefaultLang().phrases().getKey(phraseValue);
             if (phrase != null){
-                return phrase;
+                return new Result<>(phrase);
             }
-            throw new NotFoundException("Phrase not found in default lang and lang " +
+            return new Result<>("not_found", "Phrase not found in default lang and lang " +
                     "with '" + langTag +"' language tag.");
         }
-        return phrase;
+        return new Result<>(phrase);
     }
 
     public static Result<String> getButtonByValue(String langTag, String buttonValue){
@@ -88,12 +88,12 @@ public final class LocalizationService {
         if (button == null){
             button = repository.getDefaultLang().buttons().getKey(buttonValue);
             if (button != null){
-                return new Result<String>(true, button);
+                return new Result<>(button);
             }
-            throw new NotFoundException("Button not found in default lang and lang " +
-                    "with '" + langTag +"' language tag.");
+            return new Result<>("not_found", "Button not found in default lang and lang " +
+                         "with '" + langTag +"' language tag.");
         }
-        return button;
+        return new Result<>(button);
     }
 
     private static void throwExceptionIfNotInitialized(){

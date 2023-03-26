@@ -14,9 +14,19 @@ public final class Result<T> {
         this.error = error;
         this.message = message;
     }
-    
+
+    /**
+     * Use if result is successful.
+     */
     public Result(T object){
         this(true, object, "", "");
+    }
+
+    /**
+     * Use if result is not successful.
+     */
+    public Result(String error, String message){
+        this(false, null, error, message);
     }
 
     public boolean getIsSuccess() {

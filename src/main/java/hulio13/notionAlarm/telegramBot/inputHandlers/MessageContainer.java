@@ -1,27 +1,23 @@
 package hulio13.notionAlarm.telegramBot.inputHandlers;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MessageContainer {
-    private final String userId;
     private String msg;
-    private final List<List<String>> stringKeyboard;
+    private final ArrayList<ArrayList<String>>  stringKeyboard;
 
-    public MessageContainer(String userId, String msg, List<List<String>> stringKeyboard) {
-        this.userId = userId;
+    public MessageContainer(String msg, ArrayList<ArrayList<String>>  stringKeyboard) {
         this.msg = msg;
         this.stringKeyboard = stringKeyboard;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public String getMsg() {
         return msg;
     }
 
-    public List<List<String>> getStringKeyboard() {
+    public ArrayList<ArrayList<String>>  getStringKeyboard() {
         return stringKeyboard;
     }
 }

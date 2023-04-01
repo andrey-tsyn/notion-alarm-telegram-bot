@@ -10,7 +10,7 @@ public class StringsToListsConverter {
         if (strings.length < maxElementsInRow){
             maxElementsInRow = strings.length;
         }
-        
+
         int rowsCount = strings.length/maxElementsInRow +
                 (strings.length % maxElementsInRow != 0 ? 1 : 0);
 

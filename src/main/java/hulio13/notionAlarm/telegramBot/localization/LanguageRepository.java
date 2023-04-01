@@ -10,8 +10,8 @@ import java.util.List;
 
 public final class LanguageRepository {
     private static final Logger logger = LoggerFactory.getLogger(LanguageRepository.class);
-    private static final List<Language> langs = new LinkedList<>();
-    private static Language defaultLang;
+    private final List<Language> langs = new LinkedList<>();
+    private Language defaultLang;
 
 
     public LanguageRepository(List<Language> languages, String defaultLanguageTag){
@@ -22,7 +22,7 @@ public final class LanguageRepository {
                 .findFirst();
 
         if (defaultLang.isPresent()){
-            LanguageRepository.defaultLang = defaultLang.get();
+            this.defaultLang = defaultLang.get();
         }
         else{
             throw new LanguageTagNotFoundException("Default language tag not found");

@@ -26,7 +26,7 @@ public final class InputHandlerRegistrar {
                 InputHandler inputHandler = (InputHandler) ctor.newInstance();
                 logger.debug("Input handler with id \"" + inputHandler.getId()
                 + "\" added.");
-                InputHandlersRepository.addHandler(clazz.getSimpleName(), inputHandler);
+                InputHandlersRepository.addHandler(inputHandler.getId(), inputHandler);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException
                      | InvocationTargetException | IllegalArgumentException e) {
                 logger.error("Class " + clazz.getName() + "has not constructor with no args or is not a class.");

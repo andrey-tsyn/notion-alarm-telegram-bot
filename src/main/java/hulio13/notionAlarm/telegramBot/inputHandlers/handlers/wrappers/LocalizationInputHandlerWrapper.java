@@ -66,7 +66,8 @@ public final class LocalizationInputHandlerWrapper extends InputHandlerWrapper {
                         row.get(j));
 
                 if (!resultBtn.isSuccess()) {
-                    throw new NotFoundException(resultBtn.error());
+                    throw new NotFoundException(resultBtn.error() + ": "
+                            + resultMsg.message());
                 }
 
                 row.set(j, resultBtn.object());

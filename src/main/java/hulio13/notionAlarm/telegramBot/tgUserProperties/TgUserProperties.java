@@ -45,8 +45,16 @@ public final class TgUserProperties {
         this.handlerId = handlerId;
     }
 
+    public String getHandlerId(){
+        return handlerId;
+    }
+
     public void setLocale(String locale) {
         this.locale = locale;
+    }
+
+    public String getLocale(){
+        return locale;
     }
 
     public void clearPayload(){
@@ -55,5 +63,9 @@ public final class TgUserProperties {
 
     public Map<String, Object> getPayload(){
         return payload;
+    }
+
+    public String getUserId(){
+        return userId;
     }
 }

@@ -7,6 +7,7 @@ import hulio13.notionAlarm.exceptions.NotInitializedException;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -53,8 +54,10 @@ public final class JsonTgUserPropertiesRepository implements Repository<TgUserPr
     @Override
     public TgUserProperties get(Predicate<TgUserProperties> predicate) {
         synchronized (infos){
-            var info = infos.stream().filter(predicate).findFirst().get();
-            return info;
+            Optional<TgUserProperties> info = infos.stream()
+                    .filter(predicate)
+                    .findFirst();
+            return info.isPresent() ? info.get() : null;
         }
     }
 

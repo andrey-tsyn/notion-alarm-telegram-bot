@@ -9,6 +9,7 @@ import hulio13.notionAlarm.exceptions.NotInitializedException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -57,8 +58,8 @@ public final class JsonUserRepository implements UserRepository {
     @Override
     public User get(Predicate<User> predicate) {
         synchronized (users){
-            User user = users.stream().filter(predicate).findFirst().get();
-            return user;
+            Optional<User> user = users.stream().filter(predicate).findFirst();
+            return user.isPresent() ? user.get() : null;
         }
     }
 

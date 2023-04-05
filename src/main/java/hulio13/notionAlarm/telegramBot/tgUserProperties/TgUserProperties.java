@@ -9,28 +9,14 @@ import java.util.Map;
 public final class TgUserProperties {
     public final String telegramId;
     private final String userId;
-    private String handlerId = "DefaultHandler";
+    private String handlerId = "Default";
     private String locale;
     private final Map<String, Object> payload;
 
     @JsonCreator
     public TgUserProperties(@JsonProperty("userId") String userId,
                             @JsonProperty("telegramId") String telegramId,
-                            @JsonProperty("handlerId") String handlerId,
-                            @JsonProperty("locale") String locale,
-                            @JsonProperty("payload") Map<String, Object> payload) {
-        this.userId = userId;
-        this.telegramId = telegramId;
-        this.handlerId = handlerId;
-        this.locale = locale;
-        this.payload = payload;
-    }
-
-    public TgUserProperties(String userId, String telegramId, String handlerId, String locale) {
-        this(userId, telegramId, handlerId, locale, new HashMap<>());
-    }
-
-    public TgUserProperties(String userId, String telegramId, String locale){
+                            @JsonProperty("locale") String locale) {
         this(userId, telegramId);
         this.locale = locale;
     }

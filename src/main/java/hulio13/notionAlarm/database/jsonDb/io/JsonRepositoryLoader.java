@@ -11,16 +11,17 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class JsonRepositoryLoader<T>{
+public final class JsonRepositoryLoader<T> {
     private static Logger logger = LoggerFactory.getLogger(JsonRepositoryLoader.class);
-    public List<T> load(String pathToFolder, JsonSerialization<T> jsonSerialization){
+
+    public List<T> load(String pathToFolder, JsonSerialization<T> jsonSerialization) {
         List<String> fileNames;
 
-        try{
+        try {
             fileNames = JsonFilesProvider.getFileListFromFolder(pathToFolder);
-        }
-        catch (IOException e){
-            logger.error("Access to files failed, maybe no permissions granted or directory does not exist.");
+        } catch (IOException e) {
+            logger.error("Access to files failed, maybe no permissions" +
+                    " granted or directory '" + pathToFolder + "' does not exist.");
             throw new RuntimeException(e);
         }
 
@@ -28,13 +29,12 @@ public final class JsonRepositoryLoader<T>{
         JsonProvider jsonProvider = new JsonProvider(pathToFolder);
         for (var fileName :
                 fileNames) {
-            try{
+            try {
                 objects.add((T) jsonSerialization.deserialize(jsonProvider.readJsonWithName(fileName)));
-            }
-            catch (JsonReadException e){
-                logger.warn(String.format("Incorrect format of json file or don't have necessary values. Error message: " + e.getMessage()));
-            }
-            catch (ClassCastException e){
+            } catch (JsonReadException e) {
+                logger.warn(String.format("Incorrect format of json file or don't" +
+                        " have necessary values. Error message: " + e.getMessage()));
+            } catch (ClassCastException e) {
                 logger.error("");
             }
         }

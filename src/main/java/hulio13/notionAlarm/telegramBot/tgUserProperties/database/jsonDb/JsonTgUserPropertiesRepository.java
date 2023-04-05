@@ -29,7 +29,7 @@ public final class JsonTgUserPropertiesRepository implements Repository<TgUserPr
     }
 
     public static JsonTgUserPropertiesRepository getInstance(){
-        synchronized (instance){
+        synchronized (JsonUserRepository.class){
             if (instance != null) return instance;
             throw new NotInitializedException(
                     "Call 'getInstance' method with args first");

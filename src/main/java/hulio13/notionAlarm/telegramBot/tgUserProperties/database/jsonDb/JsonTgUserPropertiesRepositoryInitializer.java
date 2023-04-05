@@ -15,8 +15,14 @@ public final class JsonTgUserPropertiesRepositoryInitializer {
     public static JsonTgUserPropertiesRepository initialize(String dbFolder, int delayToSaveInDb, TimeUnit unit){
         List<TgUserProperties> tgUserProperties = new JsonRepositoryLoader<TgUserProperties>().load(dbFolder, new TgUserPropertiesSerialization());
 
-        JsonTgUserPropertiesRepository repository = new JsonTgUserPropertiesRepository(tgUserProperties);
-        JsonSaver<TgUserProperties> saver = new TgUserPropertiesSaver(dbFolder, repository, new TgUserPropertiesSerialization());
+        var repository =
+                JsonTgUserPropertiesRepository.getInstance(tgUserProperties);
+
+        JsonSaver<TgUserProperties> saver = new TgUserPropertiesSaver(
+                dbFolder,
+                repository,
+                new TgUserPropertiesSerialization()
+        );
 
         return null;
     }

@@ -8,21 +8,17 @@ import hulio13.notionAlarm.database.jsonDb.serialization.UserJsonSerialization;
 import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
 import hulio13.notionAlarm.database.jsonDb.io.JsonRepositoryLoader;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 public final class JsonUserRepositoryInitializer {
-    static public JsonUserRepository initialize(String databaseFolder, int delayToSaveInFolder, TimeUnit timeUnit){
+    static public void initialize(String databaseFolder, int delayToSaveInFolder, TimeUnit timeUnit){
 
         List<User> users = new JsonRepositoryLoader<User>().load(databaseFolder, new UserJsonSerialization());
 
-        JsonUserRepository repository = new JsonUserRepository(users, databaseFolder);
-        JsonSaver saver = new UserJsonSaver(databaseFolder, repository, new UserJsonSerialization());
+        JsonUserRepository.getInstance(users, databaseFolder);
+        JsonSaver saver = new UserJsonSaver(databaseFolder, JsonUserRepository.getInstance(), new UserJsonSerialization());
 
         UsersDumpingScheduler.start(saver, delayToSaveInFolder, timeUnit);
-
-        return repository;
     }
 }

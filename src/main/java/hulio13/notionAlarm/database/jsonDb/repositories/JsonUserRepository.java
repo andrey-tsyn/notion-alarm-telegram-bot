@@ -5,6 +5,7 @@ import hulio13.notionAlarm.core.entities.User;
 import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
 import hulio13.notionAlarm.database.jsonDb.io.UserJsonSaver;
 import hulio13.notionAlarm.database.jsonDb.serialization.UserJsonSerialization;
+import hulio13.notionAlarm.exceptions.NotInitializedException;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +13,34 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public final class JsonUserRepository implements UserRepository {
+    private static volatile JsonUserRepository instance;
+
+    public static JsonUserRepository getInstance(List<User> users,
+                                                 String pathToFolder) {
+        JsonUserRepository result = instance;
+        if (result != null){
+            return result;
+        }
+        synchronized (JsonUserRepository.class){
+            if (instance == null){
+                instance = new JsonUserRepository(users, pathToFolder);
+            }
+            return instance;
+        }
+    }
+
+    public static JsonUserRepository getInstance(){
+        synchronized (instance){
+            if (instance != null) return instance;
+            throw new NotInitializedException(
+                    "Call 'getInstance' method with args first");
+        }
+    }
+
     private final List<User> users;
     private final JsonSaver saver;
 
-    public JsonUserRepository(List<User> users, String pathToFolder) {
+    private JsonUserRepository(List<User> users, String pathToFolder) {
         this.users = users;
         this.saver = new UserJsonSaver(pathToFolder, this, new UserJsonSerialization());
     }

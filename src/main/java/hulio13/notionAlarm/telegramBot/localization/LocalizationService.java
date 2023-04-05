@@ -7,7 +7,6 @@ import hulio13.notionAlarm.telegramBot.localization.exceptions.LanguageTagNotFou
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Refactoring
 public final class LocalizationService {
     private static final Logger logger = LoggerFactory.getLogger(LocalizationService.class);
 
@@ -105,8 +104,9 @@ public final class LocalizationService {
 
     private static void throwExceptionIfLanguageIsNull(Language lang, String langTag) {
         if (lang == null) {
-            logger.warn("'" + langTag + "' language tag not found.");
-            throw new LanguageTagNotFoundException("Language tag not found");
+            String errMsg = "'" + langTag + "' language tag not found.";
+            logger.warn(errMsg);
+            throw new LanguageTagNotFoundException(errMsg);
         }
     }
 }

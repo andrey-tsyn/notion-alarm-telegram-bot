@@ -1,7 +1,6 @@
 package hulio13.notionAlarm.telegramBot.inputHandlers;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class StringsToListsConverter {
     public static ArrayList<ArrayList<String>>  convert(int maxElementsInRow, String... strings){
@@ -16,12 +15,19 @@ public class StringsToListsConverter {
 
         int currIndexOfString = 0;
 
+        boolean isFinished = false;
+
         for (int i = 0; i < rowsCount; i++){
             keyboard.add(new ArrayList<>());
             for (int j = 0; j < maxElementsInRow; j++){
                 keyboard.get(i).add(strings[currIndexOfString]);
+                if (currIndexOfString == strings.length - 1){
+                    isFinished = true;
+                    break;
+                }
                 currIndexOfString++;
             }
+            if (isFinished) break;
         }
 
         return keyboard;

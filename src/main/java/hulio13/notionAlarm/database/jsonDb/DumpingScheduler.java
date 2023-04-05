@@ -8,9 +8,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public final class UsersDumpingScheduler {
+public final class DumpingScheduler {
 
-    private static final Logger logger = LoggerFactory.getLogger(UsersDumpingScheduler.class);
+    private static final Logger logger = LoggerFactory.getLogger(DumpingScheduler.class);
 
     static public void start(JsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit){
         Thread saveThread = new Thread(() -> {
@@ -26,7 +26,9 @@ public final class UsersDumpingScheduler {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
                 logger.error(String.format(
-                        "Can't save users. Thread with saver killed. Exception message: %s", e.getMessage()
+                        "Can't save entities. Thread with saver killed. " +
+                                "Exception message: %s",
+                        e.getMessage()
                 ));
                 try {
                     throw e;

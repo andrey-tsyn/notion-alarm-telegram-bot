@@ -1,7 +1,7 @@
 package hulio13.notionAlarm.database.jsonDb.initializers;
 
 import hulio13.notionAlarm.core.entities.User;
-import hulio13.notionAlarm.database.jsonDb.UsersDumpingScheduler;
+import hulio13.notionAlarm.database.jsonDb.DumpingScheduler;
 import hulio13.notionAlarm.database.jsonDb.io.JsonSaver;
 import hulio13.notionAlarm.database.jsonDb.io.UserJsonSaver;
 import hulio13.notionAlarm.database.jsonDb.serialization.UserJsonSerialization;
@@ -19,6 +19,6 @@ public final class JsonUserRepositoryInitializer {
         JsonUserRepository.getInstance(users, databaseFolder);
         JsonSaver saver = new UserJsonSaver(databaseFolder, JsonUserRepository.getInstance(), new UserJsonSerialization());
 
-        UsersDumpingScheduler.start(saver, delayToSaveInFolder, timeUnit);
+        DumpingScheduler.start(saver, delayToSaveInFolder, timeUnit);
     }
 }

@@ -5,13 +5,14 @@ import hulio13.notionAlarm.core.entities.User;
 import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
 import hulio13.notionAlarm.exceptions.NotInitializedException;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
+import hulio13.notionAlarm.telegramBot.tgUserProperties.database.TgUserPropertiesRepository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public final class JsonTgUserPropertiesRepository implements Repository<TgUserProperties> {
+public final class JsonTgUserPropertiesRepository implements TgUserPropertiesRepository {
     private static volatile JsonTgUserPropertiesRepository instance;
 
     public static JsonTgUserPropertiesRepository getInstance(

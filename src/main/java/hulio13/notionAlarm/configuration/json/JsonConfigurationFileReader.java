@@ -20,7 +20,7 @@ public final class JsonConfigurationFileReader {
 
     static public ConfigurationMap readConfigurationFile(String configName) throws IOException {
         try{
-            File[] files = ResourceFilesProvider.getResourceFolderFiles("/" + configName);
+            File[] files = ResourceFilesProvider.getResourceFolderFiles("");
 
             for (File file : files) {
                 if (file.getName().equals(configName))

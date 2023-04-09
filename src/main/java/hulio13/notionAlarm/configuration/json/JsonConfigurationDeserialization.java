@@ -40,9 +40,8 @@ public final class JsonConfigurationDeserialization extends StdDeserializer<Conf
 
         HashMap<String, String> map = new HashMap<>();
 
-        JsonNode phraseNode = node.get("phrases");
-        if (!isNodeNullOrEmpty(phraseNode, "buttons")) {
-            process(map, "", phraseNode);
+        if (!isNodeNullOrEmpty(node, "")) {
+            process(map, "", node);
         }
 
         ConfigurationMap configurationMap = new ConfigurationMap(map);

@@ -1,7 +1,6 @@
 package hulio13.notionAlarm.telegramBot.localization.json;
 
 import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,7 +18,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
-    private static final Logger logger = LoggerFactory.getLogger(LanguageJsonDeserializer.class);
+    private static final Logger logger =
+            LoggerFactory.getLogger(LanguageJsonDeserializer.class);
 
     public LanguageJsonDeserializer() {
         this(LanguageJsonDeserializer.class);
@@ -30,7 +30,10 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
     }
 
     @Override
-    public Language deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public Language deserialize(
+            JsonParser jsonParser,
+            DeserializationContext deserializationContext)
+            throws IOException, JacksonException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         JsonNode langNode = node.get("langTag");
@@ -39,7 +42,8 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
             throw new NotSerializableException("Lang tag not exist in json.");
         }
         String langTag = langNode.asText();
-        if (langTag.isEmpty()) throw new EmptyRequiredKeyException("Lang tag is empty");
+        if (langTag.isEmpty())
+            throw new EmptyRequiredKeyException("Lang tag is empty");
 
         DualHashBidiMap<String, String> buttonBidiMap = new DualHashBidiMap();
         DualHashBidiMap<String, String> phrasesBidiMap = new DualHashBidiMap<>();
@@ -71,7 +75,8 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
 
                 logger.trace("Path: " + lastStr);
 
-                String nextPath = skipFirstWord ? next.getKey() : lastStr + "." + next.getKey();
+                String nextPath = skipFirstWord ?
+                        next.getKey() : lastStr + "." + next.getKey();
                 process(map, nextPath, next.getValue(), false);
             }
         } else {
@@ -80,14 +85,18 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
         }
     }
 
-    public boolean isNodeNullOrEmpty(JsonNode jsonNode, String keyNameOfNode, String langTag) {
+    public boolean isNodeNullOrEmpty
+            (JsonNode jsonNode,
+             String keyNameOfNode, String langTag) {
         if (jsonNode == null) {
-            logger.warn("\"" + keyNameOfNode + "\" key not found in json with language tag \""
+            logger.warn("\"" + keyNameOfNode +
+                    "\" key not found in json with language tag \""
                     + langTag + "\"");
             return true;
         }
         if (jsonNode.isEmpty()){
-            logger.warn("\"" + keyNameOfNode + "\" key has no value in json with language tag \""
+            logger.warn("\"" + keyNameOfNode +
+                    "\" key has no value in json with language tag \""
                     + langTag + "\"");
             return true;
         }

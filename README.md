@@ -10,11 +10,10 @@
 времени.
 
 ## Состояние проекта
-Работа над локализацией
 
 ```
 └──notionAlarm
-    ├── configuration - done
+    ├── configuration - rework
     ├── core - done
     ├── database - done
     ├── notion - done

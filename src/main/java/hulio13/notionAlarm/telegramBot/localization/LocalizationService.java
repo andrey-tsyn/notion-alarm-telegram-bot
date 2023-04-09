@@ -96,6 +96,10 @@ public final class LocalizationService {
         return new Result<>(button);
     }
 
+    public static String getDefaultLanguageTag(){
+        return repository.getDefaultLang().langTag();
+    }
+
     private static void throwExceptionIfNotInitialized() {
         if (!isInitialized) {
             throw new NotInitializedException("Language repository is not initialized, call Init() before.");

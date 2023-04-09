@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws TelegramApiException {
-        // TODO: redo configuration (unsafe)
         // Configuration
         Map<String, Object> configValues = ConfigurationReader.readConfigurationFile("config.json");
         String telegramToken;

@@ -25,7 +25,7 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
         this(LanguageJsonDeserializer.class);
     }
 
-    protected LanguageJsonDeserializer(Class<?> vc) {
+    private LanguageJsonDeserializer(Class<?> vc) {
         super(vc);
     }
 
@@ -33,7 +33,7 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
     public Language deserialize(
             JsonParser jsonParser,
             DeserializationContext deserializationContext)
-            throws IOException, JacksonException {
+            throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         JsonNode langNode = node.get("langTag");
@@ -80,7 +80,7 @@ public final class LanguageJsonDeserializer extends StdDeserializer<Language> {
                 process(map, nextPath, next.getValue(), false);
             }
         } else {
-            logger.trace("Added phrase: {" + lastStr + ": " + root.asText() + "}");
+            logger.trace("Add phrase: {" + lastStr + ": " + root.asText() + "}");
             map.put(lastStr, root.asText());
         }
     }

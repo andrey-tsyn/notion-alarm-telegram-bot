@@ -1,6 +1,7 @@
 package hulio13.notionAlarm.telegramBot.tgUserProperties;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashMap;
@@ -31,6 +32,7 @@ public final class TgUserProperties {
         this.handlerId = handlerId;
     }
 
+    @JsonIgnore
     public String getHandlerId(){
         return handlerId;
     }
@@ -47,6 +49,7 @@ public final class TgUserProperties {
         payload.clear();
     }
 
+    @JsonIgnore
     public Map<String, Object> getPayload(){
         return payload;
     }

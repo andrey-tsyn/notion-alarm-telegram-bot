@@ -6,11 +6,10 @@ import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
 import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.abstraction.InputHandlerWrapper;
 import hulio13.notionAlarm.telegramBot.localization.LocalizationService;
 import hulio13.notionAlarm.telegramBot.localization.VariablesInPhraseInserter;
-import hulio13.notionAlarm.telegramBot.localization.exceptions.NotFoundException;
+import hulio13.notionAlarm.exceptions.NotFoundException;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 

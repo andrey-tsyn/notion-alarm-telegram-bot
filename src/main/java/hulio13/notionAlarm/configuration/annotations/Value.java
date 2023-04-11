@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.METHOD})
 public @interface Value {
     boolean ignoreIfEmpty() default false;
-    String value();
+    String path();
 }

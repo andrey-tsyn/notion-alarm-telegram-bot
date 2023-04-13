@@ -63,7 +63,7 @@ public final class JsonConfigurationDeserialization extends StdDeserializer<Conf
                 process(map, nextPath, next.getValue());
             }
         } else {
-            logger.trace("Add value: {" + lastStr + ": " + root.asText() + "}");
+            logger.debug("Add value: {" + lastStr + ": " + root.asText() + "}");
             map.put(lastStr, root.asText());
         }
     }

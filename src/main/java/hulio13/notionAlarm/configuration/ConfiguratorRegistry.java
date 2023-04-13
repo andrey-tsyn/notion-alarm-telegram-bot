@@ -7,12 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfiguratorRegistry {
-    private static final Logger logger = LoggerFactory.getLogger(ConfiguratorRegistrar.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConfiguratorRegistry.class);
 
     private static final Map<Class<?>, Object> configurators = new HashMap<>();
 
-    // Calls with reflection
-    protected static <T> void add(Class<T> type, T serviceImpl) {
+    public static void register(Class<?> type, Object serviceImpl) {
         logger.trace("Configurator '" + type.getName() + "' added.");
         configurators.put(type, serviceImpl);
     }

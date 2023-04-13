@@ -9,6 +9,7 @@ import hulio13.notionAlarm.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -20,7 +21,9 @@ public class AnnotationsConfiguratorService {
     private static final Logger logger =
             LoggerFactory.getLogger(AnnotationsConfiguratorService.class);
 
-    public static void configure(String configPackage, ConfigurationMap map) {
+    public static Object[] getConfiguredConfigurators
+            (String configPackage,
+             ConfigurationMap map) {
         Set<Class<?>> classes = AnnotationFinder.getClassesWithAnnotation(
                 configPackage,
                 Configuration.class
@@ -32,17 +35,40 @@ public class AnnotationsConfiguratorService {
             return Integer.compare(order1, order2);
         }).collect(Collectors.toCollection(ArrayList::new));
 
+        Object[] objects = new Object[sortedClasses.size()];
+        int currIndex = 0;
+
         for (var clazz : classes) {
             String defaultPath = clazz
                     .getAnnotation(Configuration.class)
                     .defaultPath();
 
+            Constructor<?> constructor;
+            try {
+                constructor = clazz.getConstructor();
+            } catch (NoSuchMethodException e) {
+                logger.error("'" + clazz.getSimpleName() + "' has no " +
+                        "constructor without parameters");
+                throw new RuntimeException(e);
+            }
+
+            Object instance;
+            try {
+                instance = constructor.newInstance();
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+
+            objects[currIndex++] = instance;
+
             initializeValueAnnotatedFieldsAndMethods(
-                    clazz, map, defaultPath
+                    instance, map, defaultPath
             );
 
             callConfigureMethod(clazz);
         }
+
+        return objects;
     }
 
     private static void initializeValueAnnotatedFieldsAndMethods(

@@ -72,7 +72,9 @@ public class AnnotationsConfiguratorService {
     }
 
     private static void initializeValueAnnotatedFieldsAndMethods(
-            Class<?> clazz, ConfigurationMap map, String initialPath){
+            Object instance, ConfigurationMap map, String initialPath){
+        Class<?> clazz = instance.getClass();
+
         Set<Field> fields =
                 AnnotationFinder.getFieldsAnnotatedWith(clazz, Value.class);
         Set<Method> methods =
@@ -88,7 +90,7 @@ public class AnnotationsConfiguratorService {
             if (!annotation.ignoreIfEmpty())
                 throwExceptionIfValueIsEmpty(fullPath, valueById);
 
-            StringValueInjector.injectInField(field, valueById);
+            StringValueInjector.injectInField(field, valueById, instance);
         }
 
         for (Method method : methods){
@@ -105,7 +107,7 @@ public class AnnotationsConfiguratorService {
             StringValueInjector.injectInMethod(
                     method,
                     valueById,
-                    clazz);
+                    instance);
         }
     }
 
@@ -124,6 +126,7 @@ public class AnnotationsConfiguratorService {
             method.setAccessible(true);
             try {
                 method.invoke(clazz);
+                logger.debug(clazz.getSimpleName() + " configure method executed");
             } catch (IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }

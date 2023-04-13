@@ -1,4 +1,13 @@
 {
-    "telegramToken": "tgToken"
-    "botUsername": "username"
+    "telegram": {
+        "botName": "name",
+        "token": "token"
+    },
+    "json": {
+        "databaseFolders": {
+            "users": "/db/users",
+            "telegramProperties": "/db/tgProperties"
+        },
+        "saveFrequencyInMinutes": 5
+    }
 }

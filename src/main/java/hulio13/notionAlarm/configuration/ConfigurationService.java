@@ -21,6 +21,14 @@ public final class ConfigurationService {
             throw new RuntimeException(e);
         }
 
-        AnnotationsConfiguratorService.configure(configPackage, map);
+        addConfigurators(AnnotationsConfiguratorService.
+                getConfiguredConfigurators(configPackage, map));
+    }
+
+    private static void addConfigurators(Object[] objects){
+        for (var obj : objects) {
+            var clazz = obj.getClass();
+            ConfiguratorRegistry.register(clazz, clazz.cast(obj));
+        }
     }
 }

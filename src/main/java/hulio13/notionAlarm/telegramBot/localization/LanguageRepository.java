@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class LanguageRepository {
     private static final Logger logger = LoggerFactory.getLogger(LanguageRepository.class);
@@ -38,8 +39,14 @@ public final class LanguageRepository {
             Optional<Language> lang = langs.stream()
                     .filter(l -> l.langTag().equals(langTag))
                     .findFirst();
-            return lang.isPresent() ? lang.get() : null;
+            return lang.orElse(null);
         }
+    }
+
+    public String[] getAllLanguageTags(){
+        return langs.stream()
+                .map(Language::langTag)
+                .toArray(String[]::new);
     }
 
     public Language getDefaultLang() {

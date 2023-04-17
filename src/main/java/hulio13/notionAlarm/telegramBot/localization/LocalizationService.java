@@ -7,6 +7,8 @@ import hulio13.notionAlarm.telegramBot.localization.exceptions.LanguageTagNotFou
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public final class LocalizationService {
     private static final Logger logger = LoggerFactory.getLogger(LocalizationService.class);
 
@@ -98,6 +100,10 @@ public final class LocalizationService {
 
     public static String getDefaultLanguageTag(){
         return repository.getDefaultLang().langTag();
+    }
+
+    public static String[] getAvailableLanguageTags(){
+        return repository.getAllLanguageTags();
     }
 
     private static void throwExceptionIfNotInitialized() {

@@ -65,7 +65,7 @@ public class AnnotationsConfiguratorService {
                     instance, map, defaultPath
             );
 
-            callConfigureMethod(clazz);
+            callConfigureMethod(clazz, instance);
         }
 
         return objects;
@@ -111,7 +111,7 @@ public class AnnotationsConfiguratorService {
         }
     }
 
-    private static void callConfigureMethod(Class<?> clazz){
+    private static void callConfigureMethod(Class<?> clazz, Object instance){
         Set<Method> methods = AnnotationFinder.getMethodsAnnotatedWith(
                 clazz, ConfigureMethod.class);
 
@@ -133,12 +133,12 @@ public class AnnotationsConfiguratorService {
             method.setAccessible(false);
         } else {
             try {
-                Method method = clazz.getDeclaredMethod("configure", (Class<?>) null);
+                Method method = clazz.getDeclaredMethod("configure");
                 method.setAccessible(true);
-                method.invoke(clazz);
+                method.invoke(instance);
                 method.setAccessible(false);
             } catch (NoSuchMethodException ignored) { }
-            catch (InvocationTargetException | IllegalAccessException e) {
+            catch (Exception e){
                 throw new RuntimeException(e);
             }
         }

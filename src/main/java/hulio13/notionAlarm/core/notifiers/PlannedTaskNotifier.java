@@ -6,7 +6,7 @@ import hulio13.notionAlarm.core.entities.plannedTask.PlannedTask;
 import java.util.*;
 
 public final class PlannedTaskNotifier {
-    private Map<String, List<hulio13.notionAlarm.core.abstractions.PlannedTaskListener>> listeners;
+    private final Map<String, List<PlannedTaskListener>> listeners;
 
     public PlannedTaskNotifier(String... eventTypes) {
         this.listeners = new HashMap<>();
@@ -26,8 +26,8 @@ public final class PlannedTaskNotifier {
         }
     }
 
-    public void unsubscribe(hulio13.notionAlarm.core.abstractions.PlannedTaskListener listener){
-        listeners.remove(listener);
+    public void unsubscribe(String eventType, PlannedTaskListener listener){
+        listeners.get(eventType).remove(listener);
     }
     
     public void notify(String eventType, List<PlannedTask> states){

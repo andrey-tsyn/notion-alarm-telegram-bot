@@ -27,7 +27,7 @@ public final class LoggerInputHandlerWrapper extends InputHandlerWrapper {
     @Override
     public void processInput(String input, TgUserProperties properties) {
         logger.debug(getInputHandler().getId() + "'s processInput method called by user with " + properties.telegramId
-                + "telegram id.");
+                + " telegram id.");
         try{
             super.processInput(input, properties);
         }

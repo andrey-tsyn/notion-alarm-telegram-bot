@@ -1,9 +1,9 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.builders;
+package hulio13.notionAlarm.telegramBot.inputHandlers.builders;
 
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.LocalizationInputHandlerWrapper;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.LoggerInputHandlerWrapper;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.abstraction.InputHandlerWrapper;
+import hulio13.notionAlarm.telegramBot.inputHandlers.wrappers.LocalizationInputHandlerWrapper;
+import hulio13.notionAlarm.telegramBot.inputHandlers.wrappers.LoggerInputHandlerWrapper;
+import hulio13.notionAlarm.telegramBot.inputHandlers.wrappers.abstraction.InputHandlerWrapper;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 
 import java.util.function.Supplier;

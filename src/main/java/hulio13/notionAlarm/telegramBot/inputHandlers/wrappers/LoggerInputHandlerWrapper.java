@@ -1,16 +1,12 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers;
+package hulio13.notionAlarm.telegramBot.inputHandlers.wrappers;
 
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
 import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.abstraction.InputHandlerWrapper;
+import hulio13.notionAlarm.telegramBot.inputHandlers.wrappers.abstraction.InputHandlerWrapper;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public final class LoggerInputHandlerWrapper extends InputHandlerWrapper {
     private static Logger logger = LoggerFactory.getLogger("InputHandlerLogger");

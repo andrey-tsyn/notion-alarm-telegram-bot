@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers;
+package hulio13.notionAlarm.telegramBot.inputHandlers.utils;
 
 import java.util.ArrayList;
 

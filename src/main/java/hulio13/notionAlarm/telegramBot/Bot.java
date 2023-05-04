@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.telegramBot;
 
-import hulio13.notionAlarm.telegramBot.inputHandlers.KeyboardConverter;
+import hulio13.notionAlarm.telegramBot.inputHandlers.utils.KeyboardConverter;
 import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepository;

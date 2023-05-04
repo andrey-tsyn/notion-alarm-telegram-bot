@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers;
+package hulio13.notionAlarm.telegramBot.inputHandlers.utils;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;

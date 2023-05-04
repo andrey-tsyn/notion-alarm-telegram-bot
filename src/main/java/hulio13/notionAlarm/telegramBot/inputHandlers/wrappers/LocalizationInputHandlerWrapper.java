@@ -1,9 +1,9 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers;
+package hulio13.notionAlarm.telegramBot.inputHandlers.wrappers;
 
 import hulio13.notionAlarm.core.Result;
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
 import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.wrappers.abstraction.InputHandlerWrapper;
+import hulio13.notionAlarm.telegramBot.inputHandlers.wrappers.abstraction.InputHandlerWrapper;
 import hulio13.notionAlarm.telegramBot.localization.LocalizationService;
 import hulio13.notionAlarm.telegramBot.localization.VariablesInPhraseInserter;
 import hulio13.notionAlarm.exceptions.NotFoundException;

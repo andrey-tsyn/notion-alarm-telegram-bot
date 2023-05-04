@@ -3,7 +3,7 @@ package hulio13.notionAlarm.telegramBot;
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandlersRepository;
 import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.WrappedInputHandlerBuilder;
+import hulio13.notionAlarm.telegramBot.inputHandlers.handlers.builders.WrappedInputHandlerBuilder;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.database.TgUserPropertiesRepository;
 
@@ -74,7 +74,7 @@ public final class UserIOService {
 
         var builder = new WrappedInputHandlerBuilder(handler, properties);
 
-        if (useLocalization) builder.wrapWithLocalization();
+        if (useLocalization && !properties.getLocale().equals("none")) builder.wrapWithLocalization();
         if (useLogger) builder.wrapWithLogger();
 
         return builder.getHandler();

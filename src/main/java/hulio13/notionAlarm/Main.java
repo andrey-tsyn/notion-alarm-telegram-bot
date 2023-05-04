@@ -2,7 +2,6 @@ package hulio13.notionAlarm;
 
 import hulio13.notionAlarm.configuration.ConfigurationService;
 import hulio13.notionAlarm.configuration.ConfiguratorRegistry;
-import hulio13.notionAlarm.configuration.configurators.CoreConfigurator;
 import hulio13.notionAlarm.configuration.configurators.TelegramConfigurator;
 import hulio13.notionAlarm.configuration.json.JsonConfigurationFileReader;
 import hulio13.notionAlarm.telegramBot.Bot;
@@ -21,13 +20,11 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-    public static void main(String[] args) throws IOException, TelegramApiException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public static void main(String[] args) throws IOException, TelegramApiException {
         LocalizationService.init(new LanguageRepository(
                 new JsonLanguagesProvider("localization/").getAll(),
                 "ru-RU"));
@@ -38,6 +35,7 @@ public class Main {
 
         ServiceRegistry.addService(TgUserPropertiesRepository.class,
                 JsonTgUserPropertiesRepository.getInstance());
+
         UserIOService.setLocalizationHandlerId("Localization");
 
         Bot bot = ConfiguratorRegistry

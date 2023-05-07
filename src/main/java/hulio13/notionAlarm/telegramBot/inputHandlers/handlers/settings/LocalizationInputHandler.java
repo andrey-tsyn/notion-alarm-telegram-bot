@@ -1,4 +1,4 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers;
+package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.settings;
 
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
 import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandlerMarker;

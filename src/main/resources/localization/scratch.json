@@ -1,9 +1,42 @@
 {
   "langTag": "scratch",
   "phrases": {
-
+    "default": "default",
+    "settings": {
+      "menu": "settings.menu",
+      "tokens" : {
+        "menu": "settings.tokens.menu",
+        "notion" : "settings.tokens.notion"
+      }
+    },
+    "planned_task": {
+      "menu": "planned_task.menu",
+      "create": {
+        "notification_text": "planned_task.create.notification_text",
+        "interval_to_check_in_minutes": "planned_task.create.interval_to_check_in_minutes",
+        "platform_to_check": "planned_task.create.platform_to_check",
+        "data_for_access": "planned_task.create.data_for_access"
+      }
+    }
   },
   "buttons": {
-    
+    "back": "back",
+    "pages": {
+      "next": "pages.next",
+      "previous": "pages.previous"
+    },
+    "settings": {
+      "menu" : "settings.menu",
+      "change_language": "settings.change_language",
+      "tokens" : {
+        "menu" :  "settings.tokens.menu",
+        "notion" : "settings.tokens.notion"
+      }
+    },
+    "planned_task": {
+      "menu" : "planned_task.menu",
+      "get_all" : "planned_task.get_all",
+      "create_task" : "planned_task.create_task"
+    }
   }
 }

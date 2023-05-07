@@ -8,12 +8,15 @@ import hulio13.notionAlarm.telegramBot.localization.LocalizationService;
 import hulio13.notionAlarm.telegramBot.localization.VariablesInPhraseInserter;
 import hulio13.notionAlarm.exceptions.NotFoundException;
 import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public final class LocalizationInputHandlerWrapper extends InputHandlerWrapper {
+    private static final Logger logger = LoggerFactory.getLogger(LocalizationInputHandlerWrapper.class);
     private final Map<String, Object> vars;
     private final String languageTag;
 
@@ -30,7 +33,7 @@ public final class LocalizationInputHandlerWrapper extends InputHandlerWrapper {
                 input
         );
 
-        if (resultButton.isSuccess()){
+        if (resultButton.isSuccess()) {
             input = resultButton.object();
         }
 
@@ -46,13 +49,20 @@ public final class LocalizationInputHandlerWrapper extends InputHandlerWrapper {
                 langTag,
                 messageContainer.getMsg());
 
-        if (!resultMsg.isSuccess()){
+        if (!resultMsg.isSuccess() && !getInputHandler().HasNonLocalizableText()) {
             throw new NotFoundException(
                     resultMsg.error() + ": " + resultMsg.message()
             );
         }
 
-        String message = VariablesInPhraseInserter.insert(resultMsg.object(), vars);
+        String message;
+
+        if (resultMsg.object() == null &&
+                getInputHandler().HasNonLocalizableText()) {
+            message = messageContainer.getMsg();
+        } else message = resultMsg.object();
+
+        message = VariablesInPhraseInserter.insert(message, vars);
 
         ArrayList<ArrayList<String>> keyboard = messageContainer.getStringKeyboard();
 
@@ -64,12 +74,19 @@ public final class LocalizationInputHandlerWrapper extends InputHandlerWrapper {
                         langTag,
                         row.get(j));
 
-                if (!resultBtn.isSuccess()) {
+                if (!resultBtn.isSuccess() && !getInputHandler().HasNonLocalizableText()) {
                     throw new NotFoundException(resultBtn.error() + ": "
                             + resultBtn.message());
                 }
 
-                row.set(j, resultBtn.object());
+                if (resultBtn.object() == null &&
+                        getInputHandler().HasNonLocalizableText()) {
+                    String button = messageContainer
+                            .getStringKeyboard()
+                            .get(i)
+                            .get(j);
+                    row.set(j, button);
+                } else row.set(j, resultBtn.object());
             }
         }
 

@@ -17,6 +17,11 @@ public class LocalizationInputHandler implements InputHandler {
     }
 
     @Override
+    public boolean HasNonLocalizableText() {
+        return true;
+    }
+
+    @Override
     public void processInput(String input, TgUserProperties properties) {
         if (Arrays.asList(LocalizationService
                 .getAvailableLanguageTags())

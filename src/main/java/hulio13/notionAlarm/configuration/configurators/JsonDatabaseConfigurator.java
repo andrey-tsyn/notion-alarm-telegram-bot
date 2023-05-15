@@ -1,7 +1,7 @@
 package hulio13.notionAlarm.configuration.configurators;
 
-import hulio13.notionAlarm.configuration.annotations.Configuration;
-import hulio13.notionAlarm.configuration.annotations.Value;
+import hulio13.configuration.annotations.Configuration;
+import hulio13.configuration.annotations.Value;
 import hulio13.notionAlarm.database.jsonDb.initializers.JsonUserRepositoryInitializer;
 import hulio13.telegramBoot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepositoryInitializer;
 

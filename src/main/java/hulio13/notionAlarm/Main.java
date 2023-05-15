@@ -1,9 +1,9 @@
 package hulio13.notionAlarm;
 
-import hulio13.notionAlarm.configuration.ConfigurationService;
-import hulio13.notionAlarm.configuration.ConfiguratorRegistry;
+import hulio13.configuration.ConfigurationService;
+import hulio13.configuration.ConfiguratorRegistry;
+import hulio13.configuration.json.JsonConfigurationFileReader;
 import hulio13.notionAlarm.configuration.configurators.TelegramConfigurator;
-import hulio13.notionAlarm.configuration.json.JsonConfigurationFileReader;
 import hulio13.telegramBoot.Bot;
 import hulio13.telegramBoot.ServiceRegistry;
 import hulio13.telegramBoot.UserIOService;

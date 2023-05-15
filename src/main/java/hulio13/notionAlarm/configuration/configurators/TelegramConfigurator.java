@@ -1,7 +1,7 @@
 package hulio13.notionAlarm.configuration.configurators;
 
-import hulio13.notionAlarm.configuration.annotations.Configuration;
-import hulio13.notionAlarm.configuration.annotations.Value;
+import hulio13.configuration.annotations.Configuration;
+import hulio13.configuration.annotations.Value;
 import hulio13.telegramBoot.Bot;
 import hulio13.telegramBoot.inputHandlers.InputHandlerRegistrar;
 

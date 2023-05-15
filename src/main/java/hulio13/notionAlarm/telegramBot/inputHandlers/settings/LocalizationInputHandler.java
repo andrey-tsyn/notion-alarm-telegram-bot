@@ -1,11 +1,11 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers.settings;
+package hulio13.notionAlarm.telegramBot.inputHandlers.settings;
 
-import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
-import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandlerMarker;
-import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.inputHandlers.utils.StringsToListsConverter;
-import hulio13.notionAlarm.telegramBot.localization.LocalizationService;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
+import hulio13.telegramBoot.inputHandlers.InputHandler;
+import hulio13.telegramBoot.inputHandlers.InputHandlerMarker;
+import hulio13.telegramBoot.inputHandlers.MessageContainer;
+import hulio13.telegramBoot.inputHandlers.utils.StringsToListsConverter;
+import hulio13.telegramBoot.localization.LocalizationService;
+import hulio13.telegramBoot.tgUserProperties.TgUserProperties;
 
 import java.util.Arrays;
 

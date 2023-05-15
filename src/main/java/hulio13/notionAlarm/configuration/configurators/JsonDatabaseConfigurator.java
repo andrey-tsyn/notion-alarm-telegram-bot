@@ -3,7 +3,7 @@ package hulio13.notionAlarm.configuration.configurators;
 import hulio13.notionAlarm.configuration.annotations.Configuration;
 import hulio13.notionAlarm.configuration.annotations.Value;
 import hulio13.notionAlarm.database.jsonDb.initializers.JsonUserRepositoryInitializer;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepositoryInitializer;
+import hulio13.telegramBoot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepositoryInitializer;
 
 import java.util.concurrent.TimeUnit;
 

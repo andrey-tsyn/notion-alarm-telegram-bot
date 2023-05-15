@@ -4,14 +4,14 @@ import hulio13.notionAlarm.configuration.ConfigurationService;
 import hulio13.notionAlarm.configuration.ConfiguratorRegistry;
 import hulio13.notionAlarm.configuration.configurators.TelegramConfigurator;
 import hulio13.notionAlarm.configuration.json.JsonConfigurationFileReader;
-import hulio13.notionAlarm.telegramBot.Bot;
-import hulio13.notionAlarm.telegramBot.ServiceRegistry;
-import hulio13.notionAlarm.telegramBot.UserIOService;
-import hulio13.notionAlarm.telegramBot.localization.LanguageRepository;
-import hulio13.notionAlarm.telegramBot.localization.LocalizationService;
-import hulio13.notionAlarm.telegramBot.localization.json.JsonLanguagesProvider;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.database.TgUserPropertiesRepository;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepository;
+import hulio13.telegramBoot.Bot;
+import hulio13.telegramBoot.ServiceRegistry;
+import hulio13.telegramBoot.UserIOService;
+import hulio13.telegramBoot.localization.LanguageRepository;
+import hulio13.telegramBoot.localization.LocalizationService;
+import hulio13.telegramBoot.localization.json.JsonLanguagesProvider;
+import hulio13.telegramBoot.tgUserProperties.database.TgUserPropertiesRepository;
+import hulio13.telegramBoot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -19,7 +19,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);

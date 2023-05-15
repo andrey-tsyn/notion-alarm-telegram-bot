@@ -2,9 +2,8 @@ package hulio13.notionAlarm.configuration.configurators;
 
 import hulio13.notionAlarm.configuration.annotations.Configuration;
 import hulio13.notionAlarm.configuration.annotations.Value;
-import hulio13.notionAlarm.telegramBot.Bot;
-import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandlerRegistrar;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.database.jsonDb.JsonTgUserPropertiesRepositoryInitializer;
+import hulio13.telegramBoot.Bot;
+import hulio13.telegramBoot.inputHandlers.InputHandlerRegistrar;
 
 @Configuration(defaultPath = "telegram")
 public class TelegramConfigurator {

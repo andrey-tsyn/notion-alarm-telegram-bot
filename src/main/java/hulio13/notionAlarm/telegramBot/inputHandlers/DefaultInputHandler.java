@@ -1,10 +1,10 @@
-package hulio13.notionAlarm.telegramBot.inputHandlers.handlers;
+package hulio13.notionAlarm.telegramBot.inputHandlers;
 
-import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandler;
-import hulio13.notionAlarm.telegramBot.inputHandlers.InputHandlerMarker;
-import hulio13.notionAlarm.telegramBot.inputHandlers.MessageContainer;
-import hulio13.notionAlarm.telegramBot.inputHandlers.utils.StringsToListsConverter;
-import hulio13.notionAlarm.telegramBot.tgUserProperties.TgUserProperties;
+import hulio13.telegramBoot.inputHandlers.InputHandler;
+import hulio13.telegramBoot.inputHandlers.InputHandlerMarker;
+import hulio13.telegramBoot.inputHandlers.MessageContainer;
+import hulio13.telegramBoot.inputHandlers.utils.StringsToListsConverter;
+import hulio13.telegramBoot.tgUserProperties.TgUserProperties;
 
 @InputHandlerMarker
 public class DefaultInputHandler implements InputHandler {

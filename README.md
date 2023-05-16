@@ -9,19 +9,7 @@
 изменений на странице/в базе данных notion на протяжении определённого
 времени.
 
-## На что следует обратить внимание?
-- Реализация локализации. Package: "telegramBot.localization"
-- Реализация обработчиков данных с использованием своих аннотаций. Package: "telegramBot.inputHandlers"
-- Использование переодического сохранения json базы данных и сохранение при завершении работы
-с использованием Shutdown hook. Package: "database.jsonDb"
-
-## Состояние проекта
-
-```
-└──notionAlarm
-    ├── configuration - rework
-    ├── core - done
-    ├── database - done
-    ├── notion - done
-    └── telegramBot - in progress
-```
+## Некоторая логика была выделена в отдельные библиотеки
+1. https://github.com/Hulio13/configuration/ - конфигурация с помощью аннотаций
+2. https://github.com/Hulio13/telegram-boot/ - библиотека для быстрого создания бота с
+использованием аннотаций и поддержкой локализации

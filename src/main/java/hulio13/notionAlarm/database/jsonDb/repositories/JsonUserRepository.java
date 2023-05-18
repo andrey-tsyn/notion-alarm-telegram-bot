@@ -19,19 +19,19 @@ public final class JsonUserRepository implements UserRepository {
     public static JsonUserRepository getInstance(List<User> users,
                                                  String pathToFolder) {
         JsonUserRepository result = instance;
-        if (result != null){
+        if (result != null) {
             return result;
         }
-        synchronized (JsonUserRepository.class){
-            if (instance == null){
+        synchronized (JsonUserRepository.class) {
+            if (instance == null) {
                 instance = new JsonUserRepository(users, pathToFolder);
             }
             return instance;
         }
     }
 
-    public static JsonUserRepository getInstance(){
-        synchronized (instance){
+    public static JsonUserRepository getInstance() {
+        synchronized (instance) {
             if (instance != null) return instance;
             throw new NotInitializedException(
                     "Call 'getInstance' method with args first");
@@ -39,7 +39,7 @@ public final class JsonUserRepository implements UserRepository {
     }
 
     private final List<User> users;
-    private final JsonSaver saver;
+    private final JsonSaver<User> saver;
 
     private JsonUserRepository(List<User> users, String pathToFolder) {
         this.users = users;
@@ -48,7 +48,7 @@ public final class JsonUserRepository implements UserRepository {
 
     @Override
     public void forEach(Consumer<User> consumer) {
-        synchronized (users){
+        synchronized (users) {
             for (var user : users) {
                 consumer.accept(user);
             }
@@ -57,16 +57,16 @@ public final class JsonUserRepository implements UserRepository {
 
     @Override
     public User get(Predicate<User> predicate) {
-        synchronized (users){
+        synchronized (users) {
             Optional<User> user = users.stream().filter(predicate).findFirst();
-            return user.isPresent() ? user.get() : null;
+            return user.orElse(null);
         }
     }
 
     @Override
     public boolean remove(Predicate<User> predicate) {
         boolean isRemoved;
-        synchronized (users){
+        synchronized (users) {
             isRemoved = users.removeIf(predicate);
         }
         return isRemoved;
@@ -74,10 +74,10 @@ public final class JsonUserRepository implements UserRepository {
 
     @Override
     public void update(User user) {
-        synchronized (users){
+        synchronized (users) {
             User listUser = get(u -> u.id.equals(user.id));
 
-            if (user != listUser){
+            if (user != listUser) {
                 users.remove(listUser);
                 users.add(user);
             }
@@ -91,7 +91,7 @@ public final class JsonUserRepository implements UserRepository {
 
     @Override
     public void add(User user) {
-        synchronized (users){
+        synchronized (users) {
             users.add(user);
         }
         try {
@@ -99,5 +99,10 @@ public final class JsonUserRepository implements UserRepository {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public User getById(String id) {
+        return get(u -> u.id.equals(id));
     }
 }

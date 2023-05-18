@@ -13,11 +13,11 @@ import java.io.IOException;
 public abstract class JsonSaver<T> {
     protected final JsonProvider provider;
     protected final Repository<T> repository;
-    protected final JsonSerialization serializationProvider;
+    protected final JsonSerialization<T> serializationProvider;
     static protected final Logger logger = LoggerFactory.getLogger(JsonSaver.class);
 
     public JsonSaver(String pathToFolder, Repository<T> jsonRepository,
-                     JsonSerialization serializationProvider) {
+                     JsonSerialization<T> serializationProvider) {
         this.provider = new JsonProvider(pathToFolder);
         this.repository = jsonRepository;
         this.serializationProvider = serializationProvider;

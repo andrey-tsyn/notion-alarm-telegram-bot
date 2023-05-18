@@ -19,7 +19,7 @@ public class JsonDatabaseConfigurator {
     private String saveFrequencyInMinutes;
 
     public void configure() {
-        String userPath = System.getProperty("user.dir") + tgUserPropertiesFolder;
+        String userPath = System.getProperty("user.dir") + userFolder;
         String tgPropertiesPath = System.getProperty("user.dir") + tgUserPropertiesFolder;
 
         JsonUserRepositoryInitializer.initialize(

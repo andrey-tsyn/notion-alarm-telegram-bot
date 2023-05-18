@@ -2,6 +2,10 @@
     "telegram": {
         "botName": "name",
         "token": "token"
+        "localization": {
+              "localizationResourceFolder": "localization/",
+              "defaultLangTag": "ru-RU"
+        }
     },
     "json": {
         "databaseFolders": {

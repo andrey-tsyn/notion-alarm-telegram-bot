@@ -1,8 +1,7 @@
 package hulio13.notionAlarm;
 
-import hulio13.configuration.ConfigurationService;
 import hulio13.configuration.ConfiguratorRegistry;
-import hulio13.configuration.json.JsonConfigurationFileReader;
+import hulio13.configuration.ConfigurationService;
 import hulio13.notionAlarm.configuration.configurators.TelegramConfigurator;
 import hulio13.telegramBoot.Bot;
 import hulio13.telegramBoot.ServiceRegistry;
@@ -24,12 +23,6 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException, TelegramApiException {
-        LocalizationService.init(new LanguageRepository(
-                new JsonLanguagesProvider("localization/").getAll(),
-                "ru-RU"));
-
-        JsonConfigurationFileReader.readConfigurationFile("config.json");
-
         ConfigurationService.configureWithAnnotations("hulio13", "config.json");
 
         ServiceRegistry.addService(TgUserPropertiesRepository.class,

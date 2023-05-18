@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class JsonFilesProvider {
     static public List<String> getFileListFromFolder(String pathToFolder) throws IOException {
         Path path = Paths.get(pathToFolder);
-        if (!Files.exists(path)){
+        if (!Files.exists(path)) {
             Files.createDirectory(path);
         }
         List<String> fileNames = Files.list(path)

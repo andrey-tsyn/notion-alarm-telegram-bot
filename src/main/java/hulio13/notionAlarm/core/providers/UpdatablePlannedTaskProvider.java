@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public final class UpdatablePlannedTaskProvider {
-    static public List<PlannedTask> getPlannedTasksToUpdate(List<PlannedTask> plannedTasks){
+    static public List<PlannedTask> getPlannedTasksToUpdate(List<PlannedTask> plannedTasks) {
         var now = LocalDateTime.now();
         return plannedTasks.stream()
                 .filter(pt -> pt.getNextResourceUpdateTime().isBefore(now)

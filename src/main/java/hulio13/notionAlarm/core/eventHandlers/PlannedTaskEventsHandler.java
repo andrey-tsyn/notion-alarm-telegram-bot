@@ -13,11 +13,11 @@ public final class PlannedTaskEventsHandler {
         this.provider = provider;
     }
 
-    public void update(){
+    public void update() {
         notifyListenersWithTasksToUpdate();
     }
 
-    private void notifyListenersWithTasksToUpdate(){
+    private void notifyListenersWithTasksToUpdate() {
         var tasksToUpdate = UpdatablePlannedTaskProvider.getPlannedTasksToUpdate(provider.getPlannedTasks());
         for (var task :
                 tasksToUpdate) {

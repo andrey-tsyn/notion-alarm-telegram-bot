@@ -40,7 +40,6 @@ public final class PlannedTask {
     }
 
 
-
     public String getNotificationText() {
         return notificationText;
     }
@@ -52,6 +51,7 @@ public final class PlannedTask {
     public LocalDateTime getNextResourceUpdateTime() {
         return nextResourceUpdateTime;
     }
+
     public PlannedTaskDescriptor getPlannedTaskDescriptor() {
         return plannedTaskDescriptor;
     }
@@ -64,7 +64,7 @@ public final class PlannedTask {
         this.intervalToCheckInMinutes = intervalToCheckInMinutes;
     }
 
-    public void setUpdateTimeToNull(){
+    public void setUpdateTimeToNull() {
         nextResourceUpdateTime = null;
     }
 
@@ -76,10 +76,12 @@ public final class PlannedTask {
         this.nextResourceUpdateTime = LocalDateTime.now().plusMinutes(intervalInMinutes);
     }
 
-    public User getUser(){return user;}
+    public User getUser() {
+        return user;
+    }
 
-    public void setUserIfNull(User user){
-        if (this.user != null){
+    public void setUserIfNull(User user) {
+        if (this.user != null) {
             this.user = user;
         }
     }

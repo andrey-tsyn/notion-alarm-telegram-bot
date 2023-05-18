@@ -10,37 +10,35 @@ import org.slf4j.LoggerFactory;
 import java.time.LocalDateTime;
 
 public class NotionDatabaseTimeProvider {
-    private static Logger logger = LoggerFactory.getLogger(NotionDatabaseTimeProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(NotionDatabaseTimeProvider.class);
 
-    static public Result<LocalDateTime> getLastEditedDate(PlannedTask task){
+    static public Result<LocalDateTime> getLastEditedDate(PlannedTask task) {
         String token, linkToDatabase;
 
-        synchronized (task){
+        synchronized (task) {
             token = task.getUser().getTokenById("notion");
             linkToDatabase = task.getPlannedTaskDescriptor().dataForAccess;
         }
 
         NotionClient client = new NotionClient(token);
 
-        try{
+        try {
             String data = client.retrieveDatabase(linkToDatabase).getLastEditedTime();
             LocalDateTime dateTime = LocalDateTime.parse(data.replace("Z", ""));
             return new Result<>(true, dateTime, null, null);
-        }
-        catch (NotionAPIError e){
-            if (e.getError().getStatus() == 401){
+        } catch (NotionAPIError e) {
+            if (e.getError().getStatus() == 401) {
                 return new Result<>(false, null, "notion_unauthorized",
                         "Unauthorized, maybe invalid token.");
             }
-            if (e.getError().getStatus() == 404){
+            if (e.getError().getStatus() == 404) {
                 return new Result<>(false, null, "notion_not_found",
                         "Not found, do you add integration to database?");
             }
 
             logger.warn("Unhandled answer from notion api");
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             client.close();
         }
     }

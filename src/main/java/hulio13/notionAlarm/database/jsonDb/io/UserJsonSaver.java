@@ -6,7 +6,7 @@ import hulio13.notionAlarm.database.jsonDb.serialization.abstractions.JsonSerial
 
 import java.io.IOException;
 
-public final class UserJsonSaver extends JsonSaver<User>{
+public final class UserJsonSaver extends JsonSaver<User> {
     public UserJsonSaver(String pathToFolder, Repository<User> jsonRepository, JsonSerialization serializationProvider) {
         super(pathToFolder, jsonRepository, serializationProvider);
     }

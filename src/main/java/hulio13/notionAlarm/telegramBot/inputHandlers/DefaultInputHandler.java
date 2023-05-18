@@ -15,7 +15,7 @@ public class DefaultInputHandler implements InputHandler {
 
     @Override
     public void processInput(String input, TgUserProperties properties) {
-        switch (input){
+        switch (input) {
             case "settings.menu" -> properties.setHandlerId("Settings");
             case "planned_task.menu" -> properties.setHandlerId("PlannedTask");
         }
@@ -29,7 +29,7 @@ public class DefaultInputHandler implements InputHandler {
                         2,
                         "settings.menu",
                         "planned_task.menu")
-                );
+        );
 
         return messageContainer;
     }

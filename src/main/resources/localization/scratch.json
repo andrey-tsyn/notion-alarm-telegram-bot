@@ -4,9 +4,9 @@
     "default": "default",
     "settings": {
       "menu": "settings.menu",
-      "tokens" : {
+      "tokens": {
         "menu": "settings.tokens.menu",
-        "notion" : "settings.tokens.notion"
+        "notion": "settings.tokens.notion"
       }
     },
     "planned_task": {
@@ -26,17 +26,17 @@
       "previous": "pages.previous"
     },
     "settings": {
-      "menu" : "settings.menu",
+      "menu": "settings.menu",
       "change_language": "settings.change_language",
-      "tokens" : {
-        "menu" :  "settings.tokens.menu",
-        "notion" : "settings.tokens.notion"
+      "tokens": {
+        "menu": "settings.tokens.menu",
+        "notion": "settings.tokens.notion"
       }
     },
     "planned_task": {
-      "menu" : "planned_task.menu",
-      "get_all" : "planned_task.get_all",
-      "create_task" : "planned_task.create_task"
+      "menu": "planned_task.menu",
+      "get_all": "planned_task.get_all",
+      "create_task": "planned_task.create_task"
     }
   }
 }

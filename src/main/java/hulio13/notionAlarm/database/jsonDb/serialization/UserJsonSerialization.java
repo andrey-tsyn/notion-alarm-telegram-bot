@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 public final class UserJsonSerialization implements JsonSerialization<User> {
     private static final Logger logger = LoggerFactory.getLogger(UserJsonSerialization.class);
     private final ObjectMapper objectMapper;
+
     public UserJsonSerialization() {
         objectMapper = new ObjectMapper()
                 .registerModule(new JavaTimeModule())

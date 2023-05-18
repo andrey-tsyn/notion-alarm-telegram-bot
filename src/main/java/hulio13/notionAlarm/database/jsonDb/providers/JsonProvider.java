@@ -13,10 +13,10 @@ public final class JsonProvider {
         this.pathToFolder = pathToFolder;
     }
 
-    public String readJsonWithName(String fileName){
+    public String readJsonWithName(String fileName) {
         Path path = getPathWithName(fileName);
 
-        if (!path.isAbsolute()){
+        if (!path.isAbsolute()) {
             throw new IllegalArgumentException();
         }
 
@@ -35,7 +35,7 @@ public final class JsonProvider {
         writer.close();
     }
 
-    public void deleteJsonWithName(String fileName){
+    public void deleteJsonWithName(String fileName) {
         try {
             Files.delete(getPathWithName(fileName));
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public final class JsonProvider {
         }
     }
 
-    private Path getPathWithName(String fileName){
-        return Paths.get(pathToFolder, fileName+".json");
+    private Path getPathWithName(String fileName) {
+        return Paths.get(pathToFolder, fileName + ".json");
     }
 }

@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class JsonRepositoryLoader<T> {
-    private static Logger logger = LoggerFactory.getLogger(JsonRepositoryLoader.class);
+    private static final Logger logger = LoggerFactory.getLogger(JsonRepositoryLoader.class);
 
     public List<T> load(String pathToFolder, JsonSerialization<T> jsonSerialization) {
         List<String> fileNames;
@@ -30,7 +30,7 @@ public final class JsonRepositoryLoader<T> {
         for (var fileName :
                 fileNames) {
             try {
-                objects.add((T) jsonSerialization.deserialize(jsonProvider.readJsonWithName(fileName)));
+                objects.add(jsonSerialization.deserialize(jsonProvider.readJsonWithName(fileName)));
             } catch (JsonReadException e) {
                 logger.warn(String.format("Incorrect format of json file or don't" +
                         " have necessary values. Error message: " + e.getMessage()));

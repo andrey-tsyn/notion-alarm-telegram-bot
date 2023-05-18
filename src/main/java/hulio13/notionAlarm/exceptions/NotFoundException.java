@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.exceptions;
 
-public final class NotFoundException extends RuntimeException{
+public final class NotFoundException extends RuntimeException {
     public NotFoundException() {
     }
 

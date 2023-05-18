@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.exceptions;
 
-public final class NotInitializedException extends RuntimeException{
+public final class NotInitializedException extends RuntimeException {
     public NotInitializedException() {
     }
 

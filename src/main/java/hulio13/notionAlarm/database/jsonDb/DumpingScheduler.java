@@ -12,12 +12,11 @@ public final class DumpingScheduler {
 
     private static final Logger logger = LoggerFactory.getLogger(DumpingScheduler.class);
 
-    static public void start(JsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit){
+    static public void start(JsonSaver saver, int delayToSaveInFolder, TimeUnit timeUnit) {
         Thread saveThread = new Thread(() -> {
             try {
                 saver.saveAll();
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });

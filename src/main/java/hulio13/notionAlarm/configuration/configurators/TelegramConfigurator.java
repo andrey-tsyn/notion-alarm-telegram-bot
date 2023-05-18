@@ -24,11 +24,11 @@ public class TelegramConfigurator {
     @Value(path = "token")
     private String token;
 
-    public Bot getConfiguredBot(){
+    public Bot getConfiguredBot() {
         return new Bot(token, botName);
     }
 
-    public void configure(){
+    public void configure() {
         LocalizationService.init(new LanguageRepository(
                 new JsonLanguagesProvider(localizationResourceFolder).getAll(),
                 defaultLangTag));

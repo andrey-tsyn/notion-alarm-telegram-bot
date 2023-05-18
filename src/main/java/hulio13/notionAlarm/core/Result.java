@@ -18,14 +18,14 @@ public final class Result<T> {
     /**
      * Use if result is successful.
      */
-    public Result(T object){
+    public Result(T object) {
         this(true, object, "", "");
     }
 
     /**
      * Use if result is not successful.
      */
-    public Result(String error, String message){
+    public Result(String error, String message) {
         this(false, null, error, message);
     }
 

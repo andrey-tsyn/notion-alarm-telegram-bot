@@ -12,11 +12,12 @@ public final class PlannedTaskProvider {
     public PlannedTaskProvider(UserRepository repository) {
         this.repository = repository;
     }
-    public List<PlannedTask> getPlannedTasks(){
+
+    public List<PlannedTask> getPlannedTasks() {
         List<PlannedTask> plannedTasks = new ArrayList<>();
 
         repository.forEach(user -> {
-                plannedTasks.addAll(user.getPlannedTasks());
+            plannedTasks.addAll(user.getPlannedTasks());
         });
 
         return plannedTasks;

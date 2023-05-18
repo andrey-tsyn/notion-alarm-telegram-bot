@@ -1,9 +1,7 @@
 package hulio13.notionAlarm.database.jsonDb.io;
 
 import hulio13.notionAlarm.core.abstractions.Repository;
-import hulio13.notionAlarm.core.entities.User;
 import hulio13.notionAlarm.database.jsonDb.providers.JsonProvider;
-import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
 import hulio13.notionAlarm.database.jsonDb.serialization.abstractions.JsonSerialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

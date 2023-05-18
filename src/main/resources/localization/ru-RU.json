@@ -4,9 +4,9 @@
     "default": "Куда пойдём?",
     "settings": {
       "menu": "Выберите раздел.",
-      "tokens" : {
+      "tokens": {
         "menu": "Выберите какой токен вы хотите добавить.",
-        "notion" : "Тут должна быть инструкция"
+        "notion": "Тут должна быть инструкция"
       }
     },
     "planned_task": {
@@ -26,17 +26,17 @@
       "previous": "Предыдущая"
     },
     "settings": {
-      "menu" : "Настройки",
+      "menu": "Настройки",
       "change_language": "Выбрать язык",
-      "tokens" : {
-        "menu" :  "Токены",
-        "notion" : "Notion"
+      "tokens": {
+        "menu": "Токены",
+        "notion": "Notion"
       }
     },
     "planned_task": {
-      "menu" : "Задачи",
-      "get_all" : "Получить все",
-      "create_task" : "Создать задачу"
+      "menu": "Задачи",
+      "get_all": "Получить все",
+      "create_task": "Создать задачу"
     }
   }
 }

@@ -1,10 +1,10 @@
 package hulio13.notionAlarm.telegramBot.wrappers;
 
+import hulio13.notionAlarm.core.entities.User;
 import hulio13.notionAlarm.database.jsonDb.repositories.JsonUserRepository;
 import hulio13.telegramBoot.inputHandlers.InputHandler;
 import hulio13.telegramBoot.inputHandlers.wrappers.abstraction.InputHandlerWrapper;
 import hulio13.telegramBoot.tgUserProperties.TgUserProperties;
-import hulio13.notionAlarm.core.entities.User;
 
 public class UserInputHandlerWrapper extends InputHandlerWrapper {
     public UserInputHandlerWrapper(InputHandler inputHandler, TgUserProperties properties) {

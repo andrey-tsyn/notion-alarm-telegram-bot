@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class StringFromFileExtractor {
-    static public String extractString(File file){
-        if (!file.isFile()){
+    static public String extractString(File file) {
+        if (!file.isFile()) {
             throw new IllegalArgumentException();
         }
 

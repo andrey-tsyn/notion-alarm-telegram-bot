@@ -9,7 +9,7 @@ import hulio13.notionAlarm.core.repositories.PlannedTaskPlatformRepository;
 import java.io.IOException;
 
 public final class PlannedTaskPlatformDeserializer extends StdDeserializer<PlannedTaskPlatform> {
-    protected PlannedTaskPlatformDeserializer() {
+    private PlannedTaskPlatformDeserializer() {
         super(PlannedTaskPlatform.class);
     }
 

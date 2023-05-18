@@ -1,6 +1,6 @@
 package hulio13.notionAlarm.database.jsonDb.serialization.exceptions;
 
-public class JsonReadException extends Exception{
+public class JsonReadException extends Exception {
     public JsonReadException() {
     }
 

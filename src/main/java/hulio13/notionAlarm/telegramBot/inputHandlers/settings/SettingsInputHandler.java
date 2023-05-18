@@ -15,7 +15,7 @@ public class SettingsInputHandler implements InputHandler {
 
     @Override
     public void processInput(String input, TgUserProperties properties) {
-        switch (input){
+        switch (input) {
             case "settings.change_language" -> properties.setHandlerId("Localization");
             case "settings.tokens.menu" -> properties.setHandlerId("Token");
             case "back" -> properties.setHandlerId("Default");

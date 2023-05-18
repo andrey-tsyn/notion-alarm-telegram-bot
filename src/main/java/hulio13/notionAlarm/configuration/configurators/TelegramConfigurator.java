@@ -34,5 +34,7 @@ public class TelegramConfigurator {
                 defaultLangTag));
 
         InputHandlerRegistrar.registerHandlers();
+
+        InputHandlerWrapperRegistry.addWrapper(UserInputHandlerWrapper.class);
     }
 }
